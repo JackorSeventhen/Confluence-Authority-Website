@@ -12,3 +12,8 @@ V 1.02a:
 - Added Discord hyperlink that directs to Hegemon: Everglow Discord server.
 - Added a music toggle button (currently doesn't carry over when you change webpages).
 - Implemented an early rendition of the Characters webpage.
+
+V 1.03a:
+- Improved the Characters webpage (still in development).
+- Added drop-down menus to header hyperlinks.
+- Changed header hyperlinks backgrounds to be uniform.
