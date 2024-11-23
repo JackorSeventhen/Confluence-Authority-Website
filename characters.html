@@ -251,20 +251,19 @@
             animation: pulse-glow 2s infinite alternate;
         }
 		
-		.main-content h2 {
+		.page-title h2 {
             font-family: 'moto verse', sans-serif;
-            font-size: 19px;
+            font-size: 29px;
             color: cyan;
             text-transform: uppercase;
             animation: pulse-glow 2s infinite alternate;
         }
 
-        .main-content h3 {
+        .page-title h3 {
             font-family: 'Orbitron', sans-serif;
             font-size: 20px;
             color: #ffffff;
             margin-top: -20px;
-            margin-bottom: 30px;
             letter-spacing: 2px;
             text-transform: uppercase;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
@@ -283,7 +282,7 @@
 		
 		.audio-controls {
         position: fixed;
-        bottom: 2px;
+        bottom: 8px;
         left: 10px;
         z-index: 1000;
         }
@@ -291,8 +290,8 @@
         .music-btn {
         background: rgba(0, 255, 255, 0.5);
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         cursor: pointer;
         transition: all 0.3s ease;
         display: column;
@@ -307,7 +306,7 @@
 
         .music-icon {
         color: cyan;
-        font-size: 18px;
+        font-size: 13px;
         }
 
         .music-btn.playing {
@@ -324,12 +323,12 @@
 
 <body>
 <audio id="bgMusic" loop>
-    <source src="theme.mp3" type="audio/mpeg">
+    <source src="multimedia/theme.mp3" type="audio/mpeg">
     </audio>
     <!-- Header -->
     <header>
         <div class="logo">
-    <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
         <img src="https://i.imgur.com/wmX8oGB.png" alt="Confluence Logo" width="50">
         <h1>Confluence Authority</h1>
     </a>
@@ -344,8 +343,8 @@
 
     <!-- Main Content -->
     <div class="page-title">
-        <h1>Characters</h1>
-        <p>Test Twist French Baguette</p>
+        <h2>Characters</h2>
+        <h3>Test Twist French Baguette</h3>
     </div>
 
     <div class="character-section">
@@ -355,7 +354,7 @@
                 Human Characters
             </a>
             <div class="teaser-<div class="teaser-text">
-                This is a repository of various homo sapien individuals. From the <span class="highlight">Aegis II Ascendants</span> defending humanity's interests across the stars, to the rebellious <span class="highlight">Confederate separatists</span> fighting against the Confluence for independence - there is an entire spider web of human characters whose actions will determine the fate of our species. Whether loyal to the Confluence or fighting against it, each carries their own vision of humanity's future.
+                This is a repository of various homo sapien individuals. From the <span class="highlight">Aegis II Ascendants</span> defending humanity's interests across the stars to the rebellious <span class="highlight">Confederate separatists</span> fighting against the Confluence for independence - there is an entire spider web of human characters whose actions will determine the fate of our species. Whether loyal to the Confluence or fighting against it, each carries their own vision of humanity's future.
             </div>
         </div>
 
@@ -371,8 +370,8 @@
 
         <!-- Additional Teaser Section -->
         <div class="character-container">
-            <div class="teaser-text" style="font-style: italic; color: #00dcff;">
-                "There are no heroes or villains in this galaxy. They are merely a matter of perspective. Victory will be claimed not by those who are righteous, but by those who survive." - Anonymous
+            <div class="teaser-text" style="font-style: italic; color: cyan;">
+                "There are no heroes or villains in this galaxy. They are merely a matter of perspective. Victory will be claimed not by those who are righteous, but by those who survive." - Sgt. Veother
             </div>
         </div>
     </div>
