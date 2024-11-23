@@ -1,0 +1,13 @@
+Changelog.
+
+V 1.0a:
+- First publication of Everglow's Website.
+
+V1.01a:
+- Improved title and sub-title fonts.
+- Added an additional container (box) with poster.
+
+V 1.02a:
+- Added Discord hyperlink that directs to Hegemon: Everglow Discord server.
+- Added a music toggle button (currently doesn't carry over when you change webpages).
+- Implemented an early rendition of the Characters webpage.
