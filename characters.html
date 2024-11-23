@@ -262,7 +262,7 @@
             100% { text-shadow: 0 0 30px cyan, 0 0 60px cyan; }
         }
 		
-		.audio-controls {
+	.audio-controls {
         position: fixed;
         bottom: 2px;
         left: 10px;
@@ -305,7 +305,7 @@
 
 <body>
 <audio id="bgMusic" loop>
-    <source src="theme.mp3" type="audio/mpeg">
+    <source src="multimedia/theme.mp3" type="audio/mpeg">
     </audio>
     <!-- Header -->
     <header>
@@ -378,7 +378,6 @@
         const audio = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
         
-        // Function to get current timestamp before page unload
         window.addEventListener('beforeunload', function() {
             if (!audio.paused) {
                 localStorage.setItem('musicTime', audio.currentTime);
@@ -386,7 +385,6 @@
             }
         });
 
-        // Initialize music state
         function initializeMusic() {
             const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
@@ -423,27 +421,15 @@
             }
             localStorage.setItem('musicTime', audio.currentTime);
         }
-
-        // Update button visual state
-        function updateButtonState(isPlaying) {
-            if (isPlaying) {
-                musicToggle.classList.add('playing');
-            } else {
-                musicToggle.classList.remove('playing');
-            }
-        }
-
-        // Periodically save current time
+	    
         setInterval(() => {
             if (!audio.paused) {
                 localStorage.setItem('musicTime', audio.currentTime);
             }
         }, 1000);
 
-        // Add click event listener to button
         musicToggle.addEventListener('click', toggleMusic);
 
-        // Initialize the music
         initializeMusic();
     });
 </script>
