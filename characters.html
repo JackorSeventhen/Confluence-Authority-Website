@@ -47,7 +47,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 60px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.65);
             border-bottom: 2px solid cyan;
         }
 
@@ -65,41 +65,11 @@
             text-transform: uppercase;
         }
 
+        /* HEADER NAVIGATION */
         .nav-links {
             display: flex;
             gap: 20px;
-        }
-		
-		.nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            z-index: -1;
-        }
-
-        .nav-link:hover::before {
-            opacity: 1;
-        }
-
-        .nav-link:nth-child(1)::before {
-            background: url('https://i.imgur.com/0IFa6YJ.jpeg') no-repeat center center;
-            background-size: cover;
-        }
-
-        .nav-link:nth-child(2)::before {
-            background: url('https://i.imgur.com/ByQlFFR.jpeg') no-repeat center center;
-            background-size: cover;
-        }
-
-        .nav-link:nth-child(3)::before {
-            background: url('https://i.imgur.com/DOZUt39.jpeg') no-repeat center center;
-            background-size: cover;
+            margin-top: 10px;
         }
 
         .nav-link {
@@ -121,10 +91,34 @@
             box-shadow: 0 0 10px cyan;
         }
 
+        /* HOVER BACKGROUND EFFECTS FOR NAV LINKS */
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 1.0s ease-in-out;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .nav-link:nth-child(1)::before {
+            background: url('https://i.imgur.com/1Eix7NI.jpeg') no-repeat center center;
+            background-size: cover;
+        }
+
         /* Character Containers */
         .character-section {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: 20px auto;
+            margin-top: -20px;
             padding: 20px;
         }
 
@@ -142,7 +136,7 @@
             width: 300px;
             margin: 20px auto;
             padding: 15px 30px;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'moto verse', sans-serif;
             font-size: 20px;
             color: cyan;
             background: transparent;
@@ -169,7 +163,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.imgur.com/ByQlFFR.jpeg') center/cover;
+            background: url('https://i.imgur.com/6SBiygU.jpeg') center/cover;
             opacity: 0.5;
             transition: opacity 1s ease;
             z-index: -1;
@@ -182,7 +176,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.imgur.com/O81Aj4P.png') center/cover;
+            background: url('https://i.imgur.com/eU5zLug.jpeg') center/cover;
             opacity: 0.5;
             transition: opacity 1s ease;
             z-index: -1;
@@ -283,7 +277,7 @@
 		.audio-controls {
         position: fixed;
         bottom: 8px;
-        left: 10px;
+        left: 13px;
         z-index: 1000;
         }
 
@@ -307,16 +301,89 @@
         .music-icon {
         color: cyan;
         font-size: 13px;
-        }
-
-        .music-btn.playing {
-        animation: pulse 2s infinite;
+		position: absolute;
+		left: 6px;
+		bottom: 7px;
         }
 
         @keyframes pulse {
         0% { transform: scale(1); }
         50% { transform: scale(1.1); }
         100% { transform: scale(1); }
+        }
+		
+		/* DROPDOWN MENU STYLING */
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0.2, 0, 0, 0.95);
+        min-width: 160px;
+		margin-top: 11px;
+        border: 1px solid red;
+        border-radius: 4px;
+        box-shadow: 2px 5px 7px red;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        text-align: center;
+        }
+
+        .dropdown-content a {
+        color: red;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .dropdown-content a:last-child {
+        border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+        background-color: rgba(0, 255, 255, 0.1);
+        color: white;
+        }
+
+        /* DROPDOWN MENU ON HOVER */
+        .dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        }
+
+        .nav-link:hover::before {
+        opacity: 1;
+        }
+
+        .nav-link:hover {
+        background: none;
+        color: white;
+        box-shadow: 0 0 10px cyan;
+        }
+		
+		.version {
+		font-family: 'exo', sans-serif;
+        font-size: 10px;
+		position: absolute;
+        right: 60px;
+		bottom: 15px;
+        color: #666666; 
+        margin-right: auto; 
+        }
+		
+		.changelog {
+		font-family: 'exo', sans-serif;
+        font-size: 12px;
+		position: absolute;
+        right: 180px;
+		bottom: 15px;
+        color: #66666; 
+        margin-right: auto; 
         }
     </style>
 </head>
@@ -333,35 +400,64 @@
         <h1>Confluence Authority</h1>
     </a>
 </div>
-
         <nav class="nav-links">
-            <a href="history.html" class="nav-link">History</a>
-            <a href="characters.html" class="nav-link">Characters</a>
-            <a href="universe.html" class="nav-link">Universe</a>
-        </nav>
+    <div class="dropdown">
+        <a href="history.html" class="nav-link">History</a>
+        <div class="dropdown-content">
+            <a href="#">Pre-2620</a>
+            <a href="#">2620-2720</a>
+            <a href="#">Interwar Period</a>
+            <a href="#">2862-2873</a>
+            <a href="#">2874</a>
+            <a href="#">Post War</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="characters.html" class="nav-link">Characters</a>
+        <div class="dropdown-content">
+            <a href="#">Human Characters</a>
+            <a href="#">Non-Human Characters</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="universe.html" class="nav-link">Universe</a>
+        <div class="dropdown-content">
+            <a href="#">Museum</a>
+            <a href="#">Broadcasts</a>
+            <a href="#">The Xaltherans</a>
+            <a href="#">Ascendants Deepdive</a>
+            <a href="#">The Confluence</a>
+            <a href="#">The Zal'kahn</a>
+            <a href="#">The Krell</a>
+            <a href="#">The Ashensura</a>
+            <a href="#">Everglow System</a>
+            <a href="#">Major Locations</a>
+        </div>
+    </div>
+</nav>
     </header>
 
     <!-- Main Content -->
     <div class="page-title">
         <h2>Characters</h2>
-        <h3>Test Twist French Baguette</h3>
+        <h3>The Protagonists and Antagonists of Hegemon: Everglow</h3>
     </div>
 
     <div class="character-section">
         <!-- Human Characters Container -->
         <div class="character-container">
             <a href="#human-characters" class="character-button human-button">
-                Human Characters
+                HUMAN CHARACTERS
             </a>
-            <div class="teaser-<div class="teaser-text">
-                This is a repository of various homo sapien individuals. From the <span class="highlight">Aegis II Ascendants</span> defending humanity's interests across the stars to the rebellious <span class="highlight">Confederate separatists</span> fighting against the Confluence for independence - there is an entire spider web of human characters whose actions will determine the fate of our species. Whether loyal to the Confluence or fighting against it, each carries their own vision of humanity's future.
+            <div class="teaser-text">
+                This is a repository of various human and humanoid individuals. From the <span class="highlight">Aegis II Ascendants</span> defending humanity's interests across the stars to the rebellious <span class="highlight">Confederate separatists</span> fighting against the Confluence for independence - there is an entire spider web of human characters whose actions will determine the fate of our species. Whether loyal to the Confluence or fighting against it, each carries their own vision of humanity's future.
             </div>
         </div>
 
         <!-- Alien Characters Container -->
         <div class="character-container">
             <a href="#alien-characters" class="character-button alien-button">
-                Alien Characters
+                NON-HUMAN CHARACTERS
             </a>
             <div class="teaser-text">
                 You can meet <span class="highlight">Imperator Xal'Tun</span>, the bloodthirsty mastermind leading the Zal'kahn Syndicate's crusade, or the corporatist <span class="highlight">Kalthisian Merchant-Lords</span> whose true motives remain unclear but predictable, and countless other alien leaders and warriors whose ancient grudges and ambitious schemes have ignited a war that dwarfs even the Iridian Wars on a never-before-seen scale. The zealous Krell, the nomadic Vokri, the hopeful Ashensura, each species will bring its best legends to survive eradication.
@@ -381,6 +477,11 @@
     <div class="footer-text">
         Authority Protects | Strength Through Obedience | Eternal Hegemony
     </div>
+	<div class="version">Version: 1.03 alpha-build</div>
+	<div class="changelog">
+        <a href="https://github.com/JackorSeventhen/Confluence-Authority-Website/blob/main/README.md">
+        Changelog
+	</div>
     <a href="https://discord.gg/Pb3JtNf2x9" target="_blank">
         <img src="https://i.imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
     </a>
@@ -404,7 +505,6 @@
             }
         });
 
-        // Initialize music state
         function initializeMusic() {
             const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
@@ -442,7 +542,6 @@
             localStorage.setItem('musicTime', audio.currentTime);
         }
 
-        // Update button visual state
         function updateButtonState(isPlaying) {
             if (isPlaying) {
                 musicToggle.classList.add('playing');
@@ -451,17 +550,14 @@
             }
         }
 
-        // Periodically save current time
         setInterval(() => {
             if (!audio.paused) {
                 localStorage.setItem('musicTime', audio.currentTime);
             }
         }, 1000);
 
-        // Add click event listener to button
         musicToggle.addEventListener('click', toggleMusic);
 
-        // Initialize the music
         initializeMusic();
     });
 </script>
