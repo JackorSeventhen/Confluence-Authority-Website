@@ -111,17 +111,7 @@
         }
 
         .nav-link:nth-child(1)::before {
-            background: url('https://i.imgur.com/0IFa6YJ.jpeg') no-repeat center center;
-            background-size: cover;
-        }
-
-        .nav-link:nth-child(2)::before {
-            background: url('https://i.imgur.com/ByQlFFR.jpeg') no-repeat center center;
-            background-size: cover;
-        }
-
-        .nav-link:nth-child(3)::before {
-            background: url('https://i.imgur.com/DOZUt39.jpeg') no-repeat center center;
+            background: url('https://i.imgur.com/GxfAtIQ.png') no-repeat center center;
             background-size: cover;
         }
 
@@ -298,6 +288,72 @@
         50% { transform: scale(1.1); }
         100% { transform: scale(1); }
         }
+		
+		/* DROPDOWN MENU STYLING */
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0.2, 0, 0, 0.95);
+        min-width: 160px;
+		margin-top: 11px;
+        border: 1px solid red;
+        border-radius: 4px;
+        box-shadow: 2px 5px 7px red;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        text-align: center;
+        }
+
+        .dropdown-content a {
+        color: red;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .dropdown-content a:last-child {
+        border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+        background-color: rgba(0, 255, 255, 0.1);
+        color: white;
+        }
+
+        /* SHOW DROPDOWN MENU ON HOVER */
+        .dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        }
+
+        /* NAV LINK HOVER BACKGROUND EFFECT */
+        .nav-link:hover::before {
+        opacity: 1;
+        }
+
+        /* OPTIONAL: BUTTON HOVER ANIMATION */
+        .nav-link:hover {
+        background: none;
+        color: white;
+        box-shadow: 0 0 10px cyan;
+        }
+		
+		.version {
+		font-family: 'exo', sans-serif;
+        font-size: 10px;
+		position: absolute;
+        right: 60px;
+		bottom: 15px;
+        color: #666666; 
+        margin-right: auto; 
+        }
     </style>
 </head>
 <body>
@@ -312,14 +368,43 @@
            <h1>Confluence Authority</h1>
         </a>
         </div>
+<nav class="nav-links">
+    <div class="dropdown">
+        <a href="history.html" class="nav-link">History</a>
+        <div class="dropdown-content">
+            <a href="#">Pre-2620</a>
+            <a href="#">2620-2720</a>
+            <a href="#">Interwar Period</a>
+            <a href="#">2862-2873</a>
+            <a href="#">2874</a>
+            <a href="#">Post War</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="characters.html" class="nav-link">Characters</a>
+        <div class="dropdown-content">
+            <a href="#">Human Characters</a>
+            <a href="#">Alien Characters</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="universe.html" class="nav-link">Universe</a>
+        <div class="dropdown-content">
+            <a href="#">Museum</a>
+            <a href="#">Broadcasts</a>
+            <a href="#">The Xaltherans</a>
+            <a href="#">Ascendants Deepdive</a>
+            <a href="#">The Confluence</a>
+            <a href="#">The Zal'kahn</a>
+            <a href="#">The Krell</a>
+            <a href="#">The Ashensura</a>
+            <a href="#">Everglow System</a>
+            <a href="#">Major Locations</a>
+        </div>
+    </div>
+</nav>
 
-        <nav class="nav-links">
-            <a href="history.html" class="nav-link">History</a>
-            <a href="characters.html" class="nav-link">Characters</a>
-            <a href="universe.html" class="nav-link">Universe</a>
-        </nav>
     </header>
-
     <!-- MAIN CONTENT -->
     <div class="main-content">
         <h2>Hegemon</h2>
@@ -355,7 +440,7 @@
             </p>
 			<h4>Join the Fight!</h4>
                 <p>
-                    The time has come to rally to the cause. The Hegemon needs every able body, every mind, every heart. Forge a future where humanity not only survives but thrives amidst the stars.
+                    The time has never been more dire to rally to the cause. The Hegemon needs every able body, every mind, every heart. Forge a future where humanity not only survives but thrives amidst the stars.
                 </p>
                 <p class="highlight">
                     FOR THE GLORY OF MANKIND. TODAY, TOMORROW, FOREVER.
@@ -368,6 +453,7 @@
     <div class="footer-text">
         Authority Protects | Strength Through Obedience | Eternal Hegemony
     </div>
+	<div class="version">Version: 1.03 alpha-build</div>
     <a href="https://discord.gg/Pb3JtNf2x9" target="_blank">
         <img src="https://i.imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
     </a>
