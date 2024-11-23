@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The lore of Everglow, the Confluence Hegemon, and the galactic war that will decide the fate of the Milky Way.">
+    <meta name="author" content="Confluence Authority">
+    <title>Hegemon: Everglow Universe</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/O81Aj4P.png" type="image/png">
+
+    <!-- Fonts -->
+	<link rel="stylesheet" href="fonts/vortex.ttf" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Internal Styles -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Exo 2', sans-serif;
+            background: url('https://i.imgur.com/M9K6nA9.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: darken;
+            backdrop-filter: blur(2px);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Vignette effect for the background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 20%);
+            z-index: -1;
+        }
+
+        /* Main header/logo styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid cyan;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-left: 10px;
+            color: #00dcff;
+            text-transform: uppercase;
+        }
+
+        /* HEADER NAVIGATION */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            font-size: 18px;
+            color: cyan;
+            padding: 10px 20px;
+            border: 2px solid cyan;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .nav-link:hover {
+            background: none;
+            color: white;
+            box-shadow: 0 0 10px cyan;
+        }
+
+        /* HOVER BACKGROUND EFFECTS FOR NAV LINKS */
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .nav-link:nth-child(1)::before {
+            background: url('https://i.imgur.com/0IFa6YJ.jpeg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .nav-link:nth-child(2)::before {
+            background: url('https://i.imgur.com/ByQlFFR.jpeg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .nav-link:nth-child(3)::before {
+            background: url('https://i.imgur.com/DOZUt39.jpeg') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Main content */
+		.main-container {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            border: 1px solid cyan;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+		
+        .main-content {
+            padding-top: 20px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+		
+		.main-content h1 {
+            font-family: 'neon vortex', sans-serif;
+            font-size: 52px;
+            color: cyan;
+            text-shadow: 0 0 15px cyan;
+            text-transform: uppercase;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .main-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .main-content p {
+            font-size: 18px;
+            color: #d1d1d1;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .main-content .highlight {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 25px;
+            color: cyan;
+            margin-top: 30px;
+            text-shadow: 0 0 5px cyan;
+        }
+		
+		.main-container .quote {
+            font-size: 15px;
+            font-style: italic;
+            color: cyan;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Glowing effect keyframes */
+        @keyframes pulse-glow {
+            0% {
+                text-shadow: 0 0 15px cyan, 0 0 30px cyan;
+            }
+
+            100% {
+                text-shadow: 0 0 30px cyan, 0 0 60px cyan;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+            color: #aaaaaa;
+            border-top: 2px solid cyan;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with logo and navigation -->
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/wmX8oGB.png" alt="Confluence Logo" width="50">
+            <h1>Confluence Authority</h1>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#history" class="nav-link">History</a>
+            <a href="#characters" class="nav-link">Characters</a>
+            <a href="#universe" class="nav-link">Universe</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <h1>Hegemon : Everglow</h1>
+        <h2>Humanity's Greatest Struggle</h2>
+        <div class="main-container">
+            <p>
+                The <span class="highlight">Confluence Hegemon</span> is the ultimate testament to humanity's will to
+                survive, evolve, and dominate. Against impossible odds,
+                humanity once rose from the brink of extinction during the Iridian Wars.
+                Now as the galaxy spirals into chaos once more under the relentless onslaught of the genocidal
+                <span class="highlight">Koryx Pact</span>, only the Confluence can hold the line.
+            </p>
+            <p>
+                Will our empire endure the flames of war? Or will endless darkness envelop the galaxy for all eternity?
+            </p>
+            <p>
+                We stand as humanity's bulwark against annihilation, with the might of 
+				the <span class="highlight">Confluence Space Corps</span> and the
+                unparalleled power of the <span class="highlight">Ascendants</span>.
+            </p>
+            <p class="quote">
+                "The stars belong to the bold. We are humanity's boldest." - Primarch Custodian Nathaniel Dorian
+            </p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        Authority Protects | Strength Through Obedience | Eternal Hegemony
+    </footer>
+</body>
+</html>
