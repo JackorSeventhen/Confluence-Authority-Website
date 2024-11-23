@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="audio" content="autoplay">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The lore of Everglow, the Confluence Hegemon, and the galactic war that will decide the fate of the Milky Way.">
     <meta name="author" content="Confluence Authority">
@@ -69,6 +70,7 @@
         .nav-links {
             display: flex;
             gap: 20px;
+            margin-top: 10px;
         }
 
         .nav-link {
@@ -100,7 +102,7 @@
             height: 100%;
             background-size: cover;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 1.0s ease-in-out;
             z-index: -1;
         }
 
@@ -208,7 +210,7 @@
             display: block;
             margin: 20px auto;
             width: 50%;
-            border: 1px solid cyan;
+            border: 3px solid cyan;
             box-shadow: 5px 5px 0 cyan;
         }
 		
@@ -232,29 +234,91 @@
         }
 
         footer {
-            text-align: center;
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            font-size: 14px;
-            color: #aaaaaa;
-            border-top: 2px solid cyan;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.9);
+        font-size: 14px;
+        color: #aaaaaa;
+        border-top: 2px solid cyan;
+        }
+
+        .footer-text {
+        flex-grow: 1;
+        text-align: center;
+        }
+
+        .discord-icon {
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+        }
+
+        .discord-icon:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 2px cyan);
+        }
+		
+		.audio-controls {
+        position: fixed;
+        bottom: 2px;
+        left: 10px;
+        z-index: 1000;
+        }
+
+        .music-btn {
+        background: rgba(0, 255, 255, 0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: column;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .music-btn:hover {
+        background: rgba(0, 255, 255, 0.2);
+        box-shadow: 0 0 10px cyan;
+        }
+
+        .music-icon {
+        color: cyan;
+        font-size: 18px;
+        }
+
+        .music-btn.playing {
+        animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
         }
     </style>
 </head>
 
 <body>
-
+    <audio id="bgMusic" loop>
+    <source src="theme.mp3" type="audio/mpeg">
+    </audio>
     <!-- Header with logo and navigation -->
     <header>
         <div class="logo">
-            <img src="https://i.imgur.com/wmX8oGB.png" alt="Confluence Logo" width="50">
-            <h1>Confluence Authority</h1>
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+           <img src="https://i.imgur.com/wmX8oGB.png" alt="Confluence Logo" width="50">
+           <h1>Confluence Authority</h1>
+        </a>
         </div>
 
         <nav class="nav-links">
-            <a href="#history" class="nav-link">History</a>
-            <a href="#characters" class="nav-link">Characters</a>
-            <a href="#universe" class="nav-link">Universe</a>
+            <a href="history.html" class="nav-link">History</a>
+            <a href="characters.html" class="nav-link">Characters</a>
+            <a href="universe.html" class="nav-link">Universe</a>
         </nav>
     </header>
 
@@ -285,18 +349,109 @@
         </div>
 		<div class="container" id="confluence-pride">
             <h4>Join the Confluence Space Corps. Become a Hero.</h4>
-            <img src="https://i.imgur.com/NjIdRFk.png" alt="Confluence Propaganda Poster">
+            <img src="https://i.imgur.com/tNUtPef.png" alt="Confluence Propaganda Poster">
             <p>
                 The Confluence Space Corps remains humanity's greatest achievement - its soldiers and fleets hold the line
                 against impossible odds. Every Marine a hero, each Ascendant a living legend - paragons of human evolution and a beacon
                 of hope for the galaxy's peoples.
             </p>
+			<h4>Join the Fight!</h4>
+                <p>
+                    The time has come to rally to the cause. The Hegemon needs every able body, every mind, every heart. Forge a future where humanity not only survives but thrives amidst the stars.
+                </p>
+                <p class="highlight">
+                    FOR THE GLORY OF MANKIND. TODAY, TOMORROW, FOREVER.
+                </p>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer>
+    <div class="footer-text">
         Authority Protects | Strength Through Obedience | Eternal Hegemony
+    </div>
+    <a href="https://discord.gg/Pb3JtNf2x9" target="_blank">
+        <img src="https://i.imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
+    </a>
+	<div class="audio-controls">
+    <button id="musicToggle" class="music-btn">
+        <span class="music-icon">🎵</span>
+    </button>
+    </div>
     </footer>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        
+        // Function to get current timestamp before page unload
+        window.addEventListener('beforeunload', function() {
+            if (!audio.paused) {
+                localStorage.setItem('musicTime', audio.currentTime);
+                localStorage.setItem('musicPlaying', 'true');
+            }
+        });
+
+        // Initialize music state
+        function initializeMusic() {
+            const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+            
+            audio.volume = 1;
+            audio.currentTime = savedTime;
+
+            if (wasPlaying) {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        musicToggle.classList.add('playing');
+                    })
+                    .catch(error => {
+                        console.log("Playback failed:", error);
+                        musicToggle.classList.remove('playing');
+                    });
+                }
+            }
+
+            updateButtonState(wasPlaying);
+        }
+
+        // Function to play/pause music
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                localStorage.setItem('musicPlaying', 'true');
+                musicToggle.classList.add('playing');
+            } else {
+                audio.pause();
+                localStorage.setItem('musicPlaying', 'false');
+                musicToggle.classList.remove('playing');
+            }
+            localStorage.setItem('musicTime', audio.currentTime);
+        }
+
+        // Update button visual state
+        function updateButtonState(isPlaying) {
+            if (isPlaying) {
+                musicToggle.classList.add('playing');
+            } else {
+                musicToggle.classList.remove('playing');
+            }
+        }
+
+        // Periodically save current time
+        setInterval(() => {
+            if (!audio.paused) {
+                localStorage.setItem('musicTime', audio.currentTime);
+            }
+        }, '1000');
+
+        // Add click event listener to button
+        musicToggle.addEventListener('click', toggleMusic);
+
+        // Initialize the music
+        initializeMusic();
+    });
+</script>
 </html>
