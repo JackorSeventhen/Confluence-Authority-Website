@@ -1,4 +1,4 @@
-Changelog.
+# November 2024
 
 V 1.0a:
 - First publication of Everglow's Website.
