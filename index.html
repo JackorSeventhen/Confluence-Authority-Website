@@ -111,7 +111,7 @@
         }
 
         .nav-link:nth-child(1)::before {
-            background: url('https://i.imgur.com/GxfAtIQ.png') no-repeat center center;
+            background: url('https://i.imgur.com/1Eix7NI.jpeg') no-repeat center center;
             background-size: cover;
         }
 
@@ -253,7 +253,7 @@
 		.audio-controls {
         position: fixed;
         bottom: 8px;
-        left: 10px;
+        left: 13px;
         z-index: 1000;
         }
 
@@ -277,10 +277,9 @@
         .music-icon {
         color: cyan;
         font-size: 13px;
-        }
-
-        .music-btn.playing {
-        animation: pulse 2s infinite;
+		position: absolute;
+		left: 6px;
+		bottom: 7px;
         }
 
         @keyframes pulse {
@@ -327,18 +326,16 @@
         color: white;
         }
 
-        /* SHOW DROPDOWN MENU ON HOVER */
+        /* DROPDOWN MENU ON HOVER */
         .dropdown:hover .dropdown-content {
         display: block;
         opacity: 1;
         }
 
-        /* NAV LINK HOVER BACKGROUND EFFECT */
         .nav-link:hover::before {
         opacity: 1;
         }
 
-        /* OPTIONAL: BUTTON HOVER ANIMATION */
         .nav-link:hover {
         background: none;
         color: white;
@@ -352,6 +349,16 @@
         right: 60px;
 		bottom: 15px;
         color: #666666; 
+        margin-right: auto; 
+        }
+		
+		.changelog {
+		font-family: 'exo', sans-serif;
+        font-size: 12px;
+		position: absolute;
+        right: 180px;
+		bottom: 15px;
+        color: #66666; 
         margin-right: auto; 
         }
     </style>
@@ -384,7 +391,7 @@
         <a href="characters.html" class="nav-link">Characters</a>
         <div class="dropdown-content">
             <a href="#">Human Characters</a>
-            <a href="#">Alien Characters</a>
+            <a href="#">Non-Human Characters</a>
         </div>
     </div>
     <div class="dropdown">
@@ -454,6 +461,10 @@
         Authority Protects | Strength Through Obedience | Eternal Hegemony
     </div>
 	<div class="version">Version: 1.03 alpha-build</div>
+	<div class="changelog">
+        <a href="https://github.com/JackorSeventhen/Confluence-Authority-Website/blob/main/README.md">
+        Changelog
+	</div>
     <a href="https://discord.gg/Pb3JtNf2x9" target="_blank">
         <img src="https://i.imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
     </a>
@@ -477,7 +488,6 @@
             }
         });
 
-        // Initialize music state
         function initializeMusic() {
             const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime')) || '0';
@@ -515,7 +525,6 @@
             localStorage.setItem('musicTime', audio.currentTime);
         }
 
-        // Update button visual state
         function updateButtonState(isPlaying) {
             if (isPlaying) {
                 musicToggle.classList.add('playing');
@@ -524,17 +533,14 @@
             }
         }
 
-        // Periodically save current time
         setInterval(() => {
             if (!audio.paused) {
                 localStorage.setItem('musicTime', audio.currentTime);
             }
         }, '1000');
 
-        // Add click event listener to button
         musicToggle.addEventListener('click', toggleMusic);
 
-        // Initialize the music
         initializeMusic();
     });
 </script>
