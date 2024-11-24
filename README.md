@@ -17,3 +17,5 @@ V 1.03a:
 - Improved the Characters webpage (still in development).
 - Added drop-down menus to header hyperlinks.
 - Changed header hyperlinks backgrounds to be uniform.
+- Fixed a bug where audio playback wasn't recognized.
+- Fixed faulty fonts not being recognized due to CORS Policy.
