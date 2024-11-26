@@ -84,7 +84,7 @@
                 HUMAN CHARACTERS
             </a>
             <div class="teaser-text">
-                This is a repository of various human and humanoid individuals. From the <span class="highlight">Aegis II Ascendants</span> defending humanity's interests across the stars to the rebellious <span class="highlight">Confederate separatists</span> fighting against the Confluence for independence - there is an entire spider web of human characters whose actions will determine the fate of our species. Whether loyal to the Confluence or fighting against it, each carries their own vision of humanity's future. But one thing is certain: Humanity has never had more enemies.
+                This is a repository of various human and humanoid individuals. Includes imperial characters born within human borders like the <span class="highlight">Aegis II Ascendants</span> defending humanity's interests across the stars, as well as the anti-Confluence <span class="highlight">Confederate separatists</span> fighting against the Hegemon for independence, and human characters from outside the empire proper like the independent colony of <span class="highlight">Veridiax Elysium</span> - there is no less than a baker's dozen of human characters whose actions will determine the fate of our species.
             </div>
         </div>
 
@@ -94,12 +94,12 @@
                 NON-HUMAN CHARACTERS
             </a>
             <div class="teaser-text">
-                You can meet <span class="highlight">Imperator Xal'Tun</span>, the bloodthirsty mastermind leading the Zal'kahn Syndicate's crusade, or the corporatist <span class="highlight">Kalthisian Merchant-Lords</span> whose true motives remain unclear but predictable, and countless other alien leaders and warriors whose ancient grudges and ambitious schemes have ignited a war that dwarfs even the Iridian Wars on a never-before-seen scale. The zealous Krell, the nomadic Vokri, the hopeful Ashensura, each species will bring its best legends to survive eradication.
+                This includes human enemies like <span class="highlight">Imperator Xal'Tun</span>, the leader of the Zal'kahn Syndicate's crusade, and human presumed allies like the corporatist <span class="highlight">Kalthisian Merchant-Lords</span>, and several other alien leaders and warriors whose ancient grudges and ambitious schemes have ignited a war that dwarfs even the Iridian Wars on a never-before-seen scale. The zealous Krell, the nomadic Vokri, the hopeful Ashensura, each species will bring its best legends to survive the biggest conflict the galaxy has ever seen.
             </div>
         </div>
 
         <div class="teaser-text" style="font-style: italic; color: yellow;">
-                "There are no heroes or villains in this galaxy. They are merely a matter of perspective. Victory will be claimed not by those who survive, not those who are righteous alone." - Sgt. Veother
+                "There are no heroes or villains in this galaxy. They are merely a matter of perspective. Victory will be claimed not by those who are righteous alone, but by those who survive." - Sgt. Veother
         </div>
     </div>
 
@@ -120,21 +120,26 @@
     <a href="https://discord.gg/Pb3JtNf2x9" target="_blank">
         <img src="https://i.imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
     </a>
-	<div class="audio-controls">
+    <img src="https://i.imgur.com/pPeGEEE.png" alt="Theme Toggle" class="theme-toggle" id="themeToggle">
+    <div class="audio-controls">
         <button id="musicToggle" class="music-btn">
             <span class="music-icon">🎵</span>
         </button>
     </div>
-	<button class="toggle-mode" onclick="toggleMode()">Switch to Bright Mode</button>
-    <script>
-    function toggleMode() {
-        // Redirect to the bright mode page
-        window.location.href = "indexbright.html";
-    }
-    </script>
-    </footer>
+</footer>
 </body>
 <script>
+const themeToggle = document.getElementById('themeToggle');
+    
+    themeToggle.addEventListener('click', function() {
+        // Change the icon
+        this.src = 'https://i.imgur.com/Xf6wYYS.png';
+        
+        // Redirect to bright mode page
+        setTimeout(() => {
+            window.location.href = 'charactersbright.html';
+        }, 100);
+    });
     document.addEventListener('DOMContentLoaded', function() {
         const audio = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
