@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="audio" content="autoplay">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The lore of Everglow, the Confluence Hegemon, and the galactic war that will decide the fate of the Milky Way.">
+    <meta name="author" content="Confluence Authority">
+    <title>Homepage - Hegemon: Everglow</title>
+    <link rel="icon" href="https://i.imgur.com/O81Aj4P.png" type="image/png">
+	<link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="bgMusic" loop>
+    <source src="multimedia/Theme.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Header with logo and navigation -->
+    <header>
+        <div class="logo">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+           <img src="https://i.imgur.com/wmX8oGB.png" alt="Confluence Logo" width="50">
+           <h1>Confluence Authority</h1>
+        </a>
+        </div>
+<nav class="nav-links">
+    <div class="dropdown">
+        <a href="history.html" class="nav-link">History</a>
+        <div class="dropdown-content">
+            <a href="">Pre-2620</a>
+            <a href="">2620-2720</a>
+            <a href="">Interwar Period</a>
+            <a href="">2862-2873</a>
+            <a href="">2874</a>
+            <a href="">Post War</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="characters.html" class="nav-link">Characters</a>
+        <div class="dropdown-content">
+            <a href="">Human Characters</a>
+            <a href="">Non-Human Characters</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="universe.html" class="nav-link">Universe</a>
+        <div class="dropdown-content">
+            <a href="">Gallery</a>
+            <a href="">Broadcasts</a>
+            <a href="">The Xaltherans</a>
+            <a href="">Ascendants Deepdive</a>
+            <a href="">The Confluence</a>
+            <a href="">The Zal'kahn</a>
+            <a href="">The Krell</a>
+            <a href="">The Ashensura</a>
+            <a href="">Major Locations</a>
+            <a href="">Everglow System</a>
+        </div>
+    </div>
+</nav>
+
+    </header>
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <h2>Hegemon</h2>
+		<h1>Everglow</h1>
+        <h3>Humanity's Greatest Struggle</h3>
+        <div class="main-container">
+            <p>
+                The <span class="highlight">Confluence Hegemon</span> is the ultimate testament to humanity's will to
+                survive, adapt, evolve, and dominate. Against insurmountable and impossible odds,
+                humanity once rose from the brink of extinction during the Iridian Wars.
+                Now, as the galaxy spirals into chaos once more, under the relentless onslaught of the genocidal
+                <span class="highlight">Koryx Pact</span>, only the Confluence can hold the line.
+            </p>
+            <p>
+                We must endure the flames of war. Or endless darkness will envelop the galaxy for all eternity.
+            </p>
+            <p>
+                We stand as humanity's bulwark against annihilation, with the might of 
+				the <span class="highlight">Confluence Space Corps</span> and the
+                unparalleled power of the <span class="highlight">Ascendants</span>.
+            </p>
+            <p class="quote">
+                "The stars belong to the bold. We are humanity's boldest." - Primarch Custodian Nathaniel Dorian
+            </p>
+        </div>
+		<div class="container" id="confluence-pride">
+            <h4>Join the Confluence Space Corps. Become a Hero.</h4>
+            <img src="https://i.imgur.com/tNUtPef.png" alt="Confluence Propaganda Poster">
+            <p>
+                The Confluence Space Corps remains humanity's greatest achievement - its soldiers and fleets hold the line
+                against impossible odds. Every Marine a hero, each Ascendant a living legend - paragons of human evolution and a beacon
+                of hope for the galaxy's peoples.
+            </p>
+			<h4>Join the Fight!</h4>
+                <p>
+                    The time has never been more dire to rally to the cause. The Hegemon needs every able body, every mind, every heart. Forge a future where humanity not only survives but thrives amidst the stars.
+                </p>
+                <p class="highlight">
+                    FOR THE GLORY OF MANKIND. TODAY, TOMORROW, FOREVER.
+                </p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+    <div class="footer-text">
+        Authority Protects | Strength Through Obedience | Eternal Hegemony
+    </div>
+    <div class="version">Version: 1.04 indev-build</div>
+    <div class="changelog">
+        <a href="https://github.com/JackorSeventhen/Confluence-Authority-Website/blob/main/README.md">
+        Changelog
+        </a>
+    </div>
+    <div class="compat">
+        <a href="CompatWeb/inde.htm">
+        Compatibility Mode
+        </a>
+    </div>
+    <a href="https://discord.gg/Pb3JtNf2x9">
+        <img src="https://i.imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
+    </a>
+    <img src="https://i.imgur.com/pPeGEEE.png" alt="Theme Toggle" class="theme-toggle" id="themeToggle">
+    <div class="audio-controls">
+        <button id="musicToggle" class="music-btn">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+</footer>
+<script>
+const themeToggle = document.getElementById('themeToggle');
+    
+    themeToggle.addEventListener('click', function() {
+        // Change the icon
+        this.src = 'https://i.imgur.com/4aGeqXt.png';
+        
+        // Redirect to bright mode page
+        setTimeout(() => {
+            window.location.href = 'indexbright.html';
+        }, 100);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        
+        // Function to get current timestamp before page unload
+        window.addEventListener('beforeunload', function() {
+            if (!audio.paused) {
+                localStorage.setItem('musicTime', audio.currentTime);
+                localStorage.setItem('musicPlaying', 'true');
+            }
+        });
+
+        function initializeMusic() {
+            const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const savedTime = parseFloat(localStorage.getItem('musicTime')) || '0';
+            
+            audio.volume = 1;
+            audio.currentTime = savedTime;
+
+            if (wasPlaying) {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        musicToggle.classList.add('playing');
+                    })
+                    .catch(error => {
+                        console.log("Playback failed:", error);
+                        musicToggle.classList.remove('playing');
+                    });
+                }
+            }
+
+            updateButtonState(wasPlaying);
+        }
+
+        // Function to play/pause music
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                localStorage.setItem('musicPlaying', 'true');
+                musicToggle.classList.add('playing');
+            } else {
+                audio.pause();
+                localStorage.setItem('musicPlaying', 'false');
+                musicToggle.classList.remove('playing');
+            }
+            localStorage.setItem('musicTime', audio.currentTime);
+        }
+
+        function updateButtonState(isPlaying) {
+            if (isPlaying) {
+                musicToggle.classList.add('playing');
+            } else {
+                musicToggle.classList.remove('playing');
+            }
+        }
+
+        setInterval(() => {
+            if (!audio.paused) {
+                localStorage.setItem('musicTime', audio.currentTime);
+            }
+        }, '1000');
+
+        musicToggle.addEventListener('click', toggleMusic);
+
+        initializeMusic();
+    });
+</script>
+</body>
+</html>
