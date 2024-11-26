@@ -18,7 +18,7 @@ V 1.03-indev:
 - Added drop-down menus to header hyperlinks
 - Changed header hyperlinks backgrounds to be uniform
 - Fixed a bug where audio playback wasn't recognized
-- Fixed faulty fonts not being recognized due to CORS Policy
+- Fixed some fonts not being recognized due to CORS Policy
 
 V 1.04-indev:
 - Implemented Compatibility Mode for older pre-HTML 4.0 browsers
