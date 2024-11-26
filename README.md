@@ -22,4 +22,4 @@ V 1.03-indev:
 
 V 1.04-indev:
 - Implemented Compatibility Mode for older pre-HTML 4.0 browsers.
-- 
+- Added Dark/Bright Mode functionality.
