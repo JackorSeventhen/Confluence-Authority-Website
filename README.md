@@ -1,6 +1,6 @@
 # November 2024
 
-V 1.0-indev:
+## V 1.0-indev:
 - Initial publication of the Website
 
 V1.01-indev:
