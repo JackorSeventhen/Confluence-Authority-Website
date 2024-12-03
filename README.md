@@ -1,4 +1,4 @@
-# November 2024
+# NOVEMBER 2024
 
 ## V 1.0-indev:
 - Initial publication of the Website
@@ -32,6 +32,8 @@
 - Fixed minor spelling and grammar mistakes
 - Fixed Dark Mode toggle button's weird placement in characters.html
 - Fixed Dark Mode toggle button not having an icon in characters.html
+
+# DECEMBER 2024
 
 ### V 1.04.2-indev patch:
 - Added a video background (in-dev, currently a placeholder)
