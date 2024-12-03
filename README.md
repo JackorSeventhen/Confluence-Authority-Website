@@ -28,7 +28,7 @@
 - Optimized image compression for faster page loads
 - Fixed layout issues in Internet Explorer
 
-## V 1.04.1-indev patch:
+### V 1.04.1-indev patch:
 - Fixed minor spelling and grammar mistakes
 - Fixed Dark Mode toggle button's weird placement in characters.html
 - Fixed Dark Mode toggle button not having an icon in characters.html
