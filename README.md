@@ -10,7 +10,7 @@
 ## V 1.02-indev:
 - You can now click the Confluence logo at the header to be directed to the homepage
 - Added Discord hyperlink that directs to Hegemon: Everglow Discord server
-- Added a music toggle button (currently doesn't carry over when you change webpages)
+- Added a music toggle button (currently no autoplay, doesn't carry over when you change webpages)
 - Implemented an early rendition of the Characters webpage
 
 ## V 1.03-indev:
@@ -24,6 +24,7 @@
 - Implemented Compatibility Mode for older pre-HTML 4.0 browsers
 - Added Dark/Bright Mode functionality (only for some webpages)
 - Changed theme music
+- Music now carries over when you changes webpages (still no autoplay though)
 - Fixed CSS styling inconsistencies
 - Optimized image compression for faster page loads
 - Fixed layout issues in Internet Explorer
