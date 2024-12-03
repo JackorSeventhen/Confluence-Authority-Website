@@ -32,3 +32,7 @@
 - Fixed minor spelling and grammar mistakes
 - Fixed Dark Mode toggle button's weird placement in characters.html
 - Fixed Dark Mode toggle button not having an icon in characters.html
+
+### V 1.04.2-indev patch:
+- Added a video background (in-dev, currently a placeholder)
+- Implemented a better fixed footer
