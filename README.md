@@ -39,3 +39,8 @@
 ### V 1.04.2-indev patch:
 - Added a video background (in-dev, currently a placeholder)
 - Implemented a better fixed footer
+
+# MARCH 2025
+
+### UPDATE
+- Site taken down indefinitely for major total-overhauling changes to come.
