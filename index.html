@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everglow System Report | CIB Classified</title>
+    <link rel="icon" href="https://imgur.com/O81Aj4P.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="fonts/moto-verse.otf" as="font" type="font/otf" crossorigin>
+</head>
+
+<body>
+    <!-- Terminal Intro -->
+    <div id="terminal-intro">
+        <div id="terminal-text"></div>
+    </div>
+
+    <!-- Header with navigation -->
+    <header>
+        <div class="logo-container">
+            <img src="https://imgur.com/wmX8oGB.png" alt="CIB Logo" class="logo">
+            <h1 class="site-title">EVERGLOW SYSTEM REPORT</h1>
+        </div>
+        <nav>
+            <div class="nav-item">
+                HOME
+            </div>
+            <div class="nav-item">
+                PLANETARY DATA
+                <div class="dropdown">
+                    <div class="dropdown-item">Muse</div>
+                    <div class="dropdown-item">
+                        <a href="Planets/asteriaprofile.html" style="text-decoration:none">Asteria</a>
+                    </div>
+                    <div class="dropdown-item">Asteria</div>
+                    <div class="dropdown-item">Kalliophe VII</div>
+                    <div class="dropdown-item">Nashorn</div>
+                    <div class="dropdown-item">Sevenor</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                MISSION REPORTS
+                <div class="dropdown">
+                    <div class="dropdown-item">Exploration Logs</div>
+                    <div class="dropdown-item">Scientific Data</div>
+                    <div class="dropdown-item">Colonial Status</div>
+                    <div class="dropdown-item">Incident Archive</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                INTELLIGENCE
+                <span class="notification-badge">4</span>
+                <div class="dropdown">
+                    <div class="dropdown-item">Threat Assessment</div>
+                    <div class="dropdown-item">Security Briefings</div>
+                    <div class="dropdown-item">Xaltheran Artifacts</div>
+                    <div class="dropdown-item blink">⚠️ URGENT ALERTS</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                ARCHIVES
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <div class="main-content">
+            <div class="content-section">
+                <h2 class="section-title">EVERGLOW SYSTEM OVERVIEW</h2>
+                <p>The Everglow System represents humanity's most ambitious interstellar colonization project to date.
+                    Orbiting the G7V star "Everglow," this system of six planets was first identified by the CONFLUENCE
+                    CHARTING ORBITAL OBSERVATORIES (CCOO) in 2722, offering unprecedented opportunities for scientific
+                    research, resource exploitation, and permanent settlement.</p>
+
+                <div class="warning-box">
+                    <span class="warning-icon">⚠️</span>
+                    <div>
+                        <strong>CLASSIFIED NOTIFICATION:</strong> Access to certain sections of this database requires
+                        MONSOON-level clearance or higher. Unauthorized access attempts will be logged and reported to
+                        the Confluence Intelligence Bureau.
+                    </div>
+                </div>
+
+                <div class="planet-grid">
+                    <div class="planet-card">
+                        <img src="https://imgur.com/GczJsur.jpg" alt="Muse" class="planet-image">
+                        <div class="planet-info">
+                            <div class="system-rank">I</div>
+                            <h3 class="planet-name">Muse</h3>
+                            <p class="planet-data">Type: Hot Desert</p>
+                            <p class="planet-data">Distance: 0.61 AU</p>
+                            <p class="planet-data">Diameter: 14,947 km</p>
+                            <p class="planet-data">Population: Unmanned Research Station</p>
+                            <p class="planet-data">Status: <span style="color: var(--warning);">HOSTILE
+                                    ENVIRONMENT</span></p>
+                        </div>
+                    </div>
+
+                    <div class="planet-card">
+                        <img src="https://imgur.com/daeEkLq.jpg" alt="Aspen" class="planet-image">
+                        <div class="planet-info">
+                            <div class="system-rank">II</div>
+                            <h3 class="planet-name">Aspen</h3>
+                            <p class="planet-data">Type: Volcanic Habitable</p>
+                            <p class="planet-data">Distance: 0.693 AU</p>
+                            <p class="planet-data">Diameter: 11,862 km</p>
+                            <p class="planet-data">Population: 12,453</p>
+                            <p class="planet-data">Status: <span style="color: var(--warning);">ACTIVE VOLCANISM</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="planet-card">
+                        <img src="https://imgur.com/zrLi64C.jpg" alt="Asteria" class="planet-image">
+                        <div class="planet-info">
+                            <a href="planets/asteriaprofile.html" class="system-rank-link">
+                                <div class="system-rank">III</div></a>
+                            <h3 class="planet-name">Asteria</h3>
+                            <p class="planet-data">Type: Prime Habitable</p>
+                            <p class="planet-data">Distance: 0.80 AU</p>
+                            <p class="planet-data">Diameter: 14,381 km</p>
+                            <p class="planet-data">Population: 30,127,405</p>
+                            <p class="planet-data">Status: <span style="color: var(--accent);">COLONIZED</span></p>
+                        </div>
+                    </div>
+
+                    <div class="planet-card">
+                        <img src="https://imgur.com/24FxBXZ.jpg" alt="Kalliophe VII" class="planet-image">
+                        <div class="planet-info">
+                            <div class="system-rank">IV</div>
+                            <h3 class="planet-name">Kalliophe VII</h3>
+                            <p class="planet-data">Type: Island World</p>
+                            <p class="planet-data">Distance: 1.00 AU</p>
+                            <p class="planet-data">Diameter: 8,491.5 km</p>
+                            <p class="planet-data">Population: Natives (Est. Millions)</p>
+                            <p class="planet-data">Status: <span style="color: var(--secondary);">MINIMAL CONTACT</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="planet-card">
+                        <img src="https://imgur.com/4s0onh6.jpg" alt="Nashorn" class="planet-image">
+                        <div class="planet-info">
+                            <div class="system-rank">V</div>
+                            <h3 class="planet-name">Nashorn</h3>
+                            <p class="planet-data">Type: Cold Terrestrial</p>
+                            <p class="planet-data">Distance: 2.4 AU</p>
+                            <p class="planet-data">Diameter: ~6,500 km (61% Earth)</p>
+                            <p class="planet-data">Population: Research Outposts</p>
+                            <p class="planet-data">Status: <span style="color: var(--warning);">EXTREME COLD</span></p>
+                        </div>
+                    </div>
+
+                    <div class="planet-card">
+                        <img src="https://imgur.com/uCeJYaR.jpg" alt="Sevenor" class="planet-image">
+                        <div class="planet-info">
+                            <div class="system-rank">VI</div>
+                            <h3 class="planet-name">Sevenor</h3>
+                            <p class="planet-data">Type: Chlorine World</p>
+                            <p class="planet-data">Distance: 6.91 AU</p>
+                            <p class="planet-data">Diameter: 21,640 km (169% Earth)</p>
+                            <p class="planet-data">Population: None</p>
+                            <p class="planet-data">Status: <span style="color: var(--alert);">TOXIC</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">CURRENT INITIATIVES</h2>
+
+                <div class="data-grid">
+                    <div class="data-box">
+                        <div class="data-title">Nine City Expansion</div>
+                        <div class="data-value">87%</div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 87%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="data-box">
+                        <div class="data-title">Aspen Geothermal Energy</div>
+                        <div class="data-value">42.1 GW</div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="data-box">
+                        <div class="data-title">Xaltheran Ruins Mapped</div>
+                        <div class="data-value">31.4%</div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 31%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="data-box">
+                        <div class="data-title">System Security Status</div>
+                        <div class="data-value">DEFCON 3</div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 60%; background-color: var(--warning);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">LATEST DEVELOPMENT REPORTS</h2>
+
+                <div class="warning-box" style="background-color: rgba(255, 51, 0, 0.2); border-color: var(--alert);">
+                    <span class="warning-icon" style="color: var(--alert);">🔒</span>
+                    <div>
+                        <strong>SECURITY ALERT:</strong> Anomalous signals detected near Sevenor's fourth moon,
+                        Sycophant. Jakysium continues to display unexplained anomalies. Research team REYLIETH is
+                        currently investigating the matter.
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 1rem; color: var(--light);">Asteria Developments</h3>
+                <p>Nine City has expanded to accommodate 12.3 million residents, with three new dome sectors completed
+                    in the eastern quadrant. Excavation beneath the ninth Xaltheran spire has revealed a previously
+                    undocumented chamber network extending 1.7km beneath the surface.</p>
+
+                <h3 style="margin-top: 1rem; color: var(--light);">Scientific Discoveries</h3>
+                <p>The Brachiotes population on Aspen has shown unexpected tool usage patterns consistent with
+                    semi-tribal behavior. Current observations indicate they have developed fascinating very rudimentary
+                    agriculture in the volcanic plains where geothermal heat maintains optimal growing conditions
+                    year-round.</p>
+
+                <h3 style="margin-top: 1rem; color: var(--light);">Upcoming Missions</h3>
+                <p>Expedition to Sevenor's polar region remains on hold following detection of unusual chlorine gas
+                    compositions in atmosphere. Remote sensing has detected what appears to be migration patterns of
+                    multicellular extremophile organisms across the liquid hydrocarbon lakes.</p>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="time-display">
+                <div>CONFEDERATION STANDARD TIME</div>
+                <div class="current-time" id="current-time">--:--:--</div>
+                <div id="date-display">STARDATE 2874.Q1.W5</div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">SYSTEM STATUS</div>
+                <div>Comms Array: <span style="color: var(--accent);">ONLINE</span></div>
+                <div>Defense Grid: <span style="color: var(--accent);">ONLINE</span></div>
+                <div>Orbital Network: <span style="color: var(--warning);">PARTIAL</span></div>
+                <div>Medical Grid: <span style="color: var(--accent);">ONLINE</span></div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">ASPEN SEISMIC ACTIVITY</div>
+                <div class="seismic-display">
+                    <canvas id="seismic-canvas"></canvas>
+                </div>
+                <div style="text-align: right; font-size: 0.8rem; margin-top: 0.3rem;">Mount Abyssos: 4.7 mag, 6h ago
+                </div>
+            </div>
+
+            <div class="mini-console" id="mini-console">
+                <div class="console-line">> system.init() stardate: 2874.Q1.W5</div>
+                <div class="console-line">> connecting to CCOO satellite network...</div>
+                <div class="console-line">> connection established</div>
+                <div class="console-line">> loading resource monitor...</div>
+                <div class="console-line">> awaiting command input...</div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">POPULATION DATA</div>
+                <div>Asteria: 30,127,405</div>
+                <div>Aspen: 12,453</div>
+                <div>Orbiting Stations: 47,216</div>
+                <div>Research Outposts: 3,891</div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">LOCAL UPCOMING EVENTS</div>
+                <div>• Supply Ship ETA: 3d 7h</div>
+                <div>• Asteria 6-Moon Alignment: 1d 9h</div>
+                <div>• Xaltheran Artifact Council: 12h</div>
+                <div>• Nine City Festival: 5d 0h</div>
+            </div>
+
+            <!-- Propaganda section in sidebar -->
+            <div class="propaganda-section">
+                <h3 class="propaganda-title">SERVE THE CONFLUENCE</h3>
+                <img src="https://imgur.com/SUuCfqL.jpg" alt="Propaganda Poster" class="propaganda-poster">
+                <p style="font-size: 0.9rem; text-align: center;">The Space Corps needs able-bodied volunteers for
+                    defensive positions around Outrim-7 and Outrim-9. Join the ranks of the Hegemon today and enjoy
+                    special benefits and work opportunities post-service.</p>
+                <button class="popup-button" onclick="showPopup()">ENLIST TODAY</button>
+            </div>
+
+            <div class="media-controls">
+                <button id="musicToggle" class="media-button" title="Play/Pause Background Music">
+                    <span id="playIcon">▶</span><span id="pauseIcon" style="display:none;">⏸</span>
+                </button>
+                <a href="https://discord.gg/4w2JZXjQBT" target="_blank" class="discord-button" title="Join our Discord">
+                    <img src="https://imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
+                </a>
+                <audio id="bgMusic" loop>
+                    <source src="media/ambiancemain.m4a" type="audio/mp4">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">NAVIGATION</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Planetary Database</a></li>
+                    <li><a href="#">CCOO Archives</a></li>
+                    <li><a href="#">Colonial Registry</a></li>
+                    <li><a href="#">Mission Control</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">COMMAND CHANNELS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Emergency Protocols</a></li>
+                    <li><a href="#">Sector Monitoring Division</a></li>
+                    <li><a href="#">Resource Allocation</a></li>
+                    <li><a href="#">Security Directives</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">SYSTEM ACCESS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login Portal</a></li>
+                    <li><a href="#">Clearance Request</a></li>
+                    <li><a href="#">Report Submission</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            CONFLUENCE INTELLIGENCE BUREAU © 2874 | CLASSIFIED LEVEL: MONSOON-4
+        </div>
+    </footer>
+
+    <!-- Popup -->
+    <div class="popup" id="recruitment-popup">
+        <div class="popup-header">
+            <div class="popup-title">RECRUITMENT INQUIRY</div>
+            <button class="popup-close" onclick="hidePopup()">×</button>
+        </div>
+        <div class="popup-content">
+            <p>Thank you for your interest in serving the Confluence through the Everglow Initiative.</p>
+            <p>Nine City research teams require specialists with expertise in xenoarchaeology and Xaltheran artifacts.
+                All applicants must undergo comprehensive security screening and psychological evaluation.</p>
+            <p>Current high-priority positions include:</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Xaltheran Linguistics Specialists</li>
+                <li>Asterian Biosphere Researchers</li>
+                <li>Nine City Security Officers</li>
+                <li>Volcanic Geothermal Engineers</li>
+            </ul>
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" onclick="hidePopup()">IGNORE AND HIDE</button>
+            <button class="popup-button" style="background-color: var(--secondary);">PROCEED TO APPLICATION</button>
+        </div>
+    </div>
+
+    <script>
+        // Terminal intro text
+        const terminalLines = [
+            "INITIALIZING CIB SECURE CONNECTION...",
+            "ESTABLISHING ENCRYPTED CHANNEL...",
+            "VERIFYING CREDENTIALS...",
+            "ACCESSING EVERGLOW SYSTEM DATABASE...",
+            "LOADING PLANETARY DATA...",
+            "SCANNING SYSTEM STATUS...",
+            "RETRIEVING MISSION REPORTS...",
+            "ANALYZING THREAT ASSESSMENT...",
+            "COMPILING INTELLIGENCE BRIEFINGS...",
+            "DECRYPTING XALTHERAN ARTIFACT DATA...",
+            "FILTERING CLASSIFIED INFORMATION...",
+            "APPLYING SECURITY PROTOCOLS...",
+            "CHECKING ASTERIA POPULATION METRICS...",
+            "PREPARING INTERFACE...",
+            "ESTABLISHING SATELLITE UPLINK...",
+            "SYNCHRONIZING STARDATE...",
+            "CALIBRATING ASPEN SEISMIC SENSORS...",
+            "LOADING VOLCANIC ACTIVITY MONITOR...",
+            "CHECKING RESOURCE ALLOCATION...",
+            "VERIFYING COLONY STATUS...",
+            "CONNECTING TO NINE CITY MAIN HUB...",
+            "TRACKING ASTERIA MOON TRAJECTORIES...",
+            "MONITORING DEFENSE GRID...",
+            "COMPILING CCOO REPORTS...",
+            "WELCOME TO THE EVERGLOW SYSTEM REPORT",
+            "ACCESS GRANTED..."
+        ];
+
+        // terminal intro with randomized timing
+        const terminalText = document.getElementById('terminal-text');
+        const terminalIntro = document.getElementById('terminal-intro');
+
+        let lineIndex = 0;
+        const minDelay = 100;
+        const maxDelay = 500;
+
+        function displayNextLine() {
+            if (lineIndex < terminalLines.length) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line visible';
+                line.textContent = terminalLines[lineIndex];
+                terminalText.appendChild(line);
+                terminalText.scrollTop = terminalText.scrollHeight;
+                lineIndex++;
+
+                const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+                setTimeout(displayNextLine, randomDelay);
+            } else {
+                // fade out terminal after all lines are displayed
+                setTimeout(() => {
+                    terminalIntro.style.opacity = '0';
+                    terminalIntro.style.transition = 'opacity 1s ease';
+                    setTimeout(() => {
+                        terminalIntro.style.display = 'none';
+                    }, 1000);
+                }, 1000);
+            }
+        }
+
+        // terminal intro show only once per session
+        window.addEventListener('load', () => {
+            // Check if we've already shown the intro this session
+            const introShown = sessionStorage.getItem('terminalIntroShown');
+
+            if (!introShown) {
+                // first time in this session, show the intro
+                setTimeout(displayNextLine, 500);
+
+                // then mark that we've shown the intro this session
+                sessionStorage.setItem('terminalIntroShown', 'true');
+            } else {
+                // skip the intro
+                terminalIntro.style.display = 'none';
+            }
+        });
+
+        // time updater function
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+
+            // document.getElementById('date-display').textContent = `STARDATE 2874.Q1.W5`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call
+
+        // mini teensy weensy tiny wittle console functionality
+        const consoleCommands = [
+            "> scanning Aspen volcanic activity...",
+            "> downloading Xaltheran artifact data...",
+            "> analyzing anomalous signals from Sevenor...",
+            "> monitoring Kalliophe comms blackout...",
+            "> checking volcanic vent pressures...",
+            "> updating Asteria moon orbital paths...",
+            "> running Brachiotes behavior analysis...",
+            "> compiling Nine City expansion metrics...",
+            "> tracking supply fleet locations...",
+            "> syncing with orbital observatories...",
+            "> processing Mount Abyssos sensor data...",
+            "> reviewing incident reports from Aspen...",
+            "> checking habitat dome integrity...",
+            "> updating Celeste orbit calculations...",
+            "> monitoring chlorine concentrations...",
+            "> analyzing Asterian atmospheric data...",
+            "> receiving transmission from outpost K7...",
+            "> deploying probes to Jakysium...",
+            "> calculating Asteria tide predictions...",
+            "> decrypting ancient Xaltheran symbols..."
+        ];
+
+        const consoleElement = document.getElementById('mini-console');
+
+        function addConsoleMessage() {
+            const randomCommand = consoleCommands[Math.floor(Math.random() * consoleCommands.length)];
+            const lineElement = document.createElement('div');
+            lineElement.className = 'console-line';
+            lineElement.textContent = randomCommand;
+
+            consoleElement.appendChild(lineElement);
+
+            // keep only the last 8 lines
+            while (consoleElement.childElementCount > 8) {
+                consoleElement.removeChild(consoleElement.firstChild);
+            }
+
+            // scroll to bottom
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+
+            // schedule next message
+            setTimeout(addConsoleMessage, Math.random() * 3000 + 1000);
+        }
+
+        setTimeout(addConsoleMessage, 2000);
+
+        // seismic activity simulation for Aspen
+        const seismicCanvas = document.getElementById('seismic-canvas');
+        const seismicCtx = seismicCanvas.getContext('2d');
+
+        // set canvas dimensions
+        function resizeCanvas() {
+            seismicCanvas.width = seismicCanvas.offsetWidth;
+            seismicCanvas.height = seismicCanvas.offsetHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // generate seismic data with occasional volcanic spikes
+        let seismicData = [];
+        const dataPoints = 100;
+
+        function initSeismicData() {
+            seismicData = [];
+            for (let i = 0; i < dataPoints; i++) {
+                seismicData.push(Math.sin(i / 10) * 5 + (Math.random() * 3 - 1.5));
+            }
+        }
+
+        function updateSeismicData() {
+            // shift data points left
+            seismicData.shift();
+
+            // generate new data point
+            const lastValue = seismicData[seismicData.length - 1];
+            const newValue = lastValue + (Math.random() * 2 - 1);
+
+            // occasionally add volcanic spikes (more frequent for Aspen)
+            if (Math.random() < 0.05) {
+                seismicData.push(newValue + (Math.random() * 15 - 5));
+            } else {
+                seismicData.push(newValue);
+            }
+
+            // clamp values
+            seismicData[seismicData.length - 1] = Math.max(-15, Math.min(15, seismicData[seismicData.length - 1]));
+        }
+
+        function drawSeismicWave() {
+            const width = seismicCanvas.width;
+            const height = seismicCanvas.height;
+            const centerY = height / 2;
+
+            // clear canvas
+            seismicCtx.clearRect(0, 0, width, height);
+
+            // draw grid lines
+            seismicCtx.strokeStyle = 'rgba(0, 170, 255, 0.2)';
+            seismicCtx.lineWidth = 1;
+
+            // horizontal grid lines
+            for (let y = 0; y <= height; y += height / 4) {
+                seismicCtx.beginPath();
+                seismicCtx.moveTo(0, y);
+                seismicCtx.lineTo(width, y);
+                seismicCtx.stroke();
+            }
+
+            // vertical grid lines
+            for (let x = 0; x <= width; x += width / 10) {
+                seismicCtx.beginPath();
+                seismicCtx.moveTo(x, 0);
+                seismicCtx.lineTo(x, height);
+                seismicCtx.stroke();
+            }
+
+            // draw seismic line
+            seismicCtx.strokeStyle = 'rgba(0, 255, 204, 0.8)';
+            seismicCtx.lineWidth = 2;
+            seismicCtx.beginPath();
+
+            const pointSpacing = width / dataPoints;
+
+            for (let i = 0; i < seismicData.length; i++) {
+                const x = i * pointSpacing;
+                const y = centerY - seismicData[i] * (height / 40);
+
+                if (i === 0) {
+                    seismicCtx.moveTo(x, y);
+                } else {
+                    seismicCtx.lineTo(x, y);
+                }
+            }
+
+            seismicCtx.stroke();
+
+            // add glow effect - orange/red for volcanic activity
+            seismicCtx.shadowBlur = 10;
+            seismicCtx.shadowColor = 'rgba(255, 100, 0, 0.6)';
+            seismicCtx.stroke();
+            seismicCtx.shadowBlur = 0;
+        }
+
+        function animateSeismic() {
+            updateSeismicData();
+            drawSeismicWave();
+            requestAnimationFrame(animateSeismic);
+        }
+
+        initSeismicData();
+        animateSeismic();
+
+        // popup functionality
+        function showPopup() {
+            document.getElementById('recruitment-popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('recruitment-popup').style.display = 'none';
+        }
+
+        // show popup after delay
+        setTimeout(() => {
+            showPopup();
+        }, 15000);
+
+        // music player functionality but wihtout autoplay because that was ew
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+
+        musicToggle.addEventListener('click', function () {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
+            } else {
+                bgMusic.pause();
+                playIcon.style.display = 'inline';
+                pauseIcon.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

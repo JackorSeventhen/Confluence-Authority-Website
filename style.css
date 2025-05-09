@@ -1,0 +1,746 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* ================ ROOT VARIABLES OR SOMETHING ================ */
+:root {
+    --primary: #0066cc;
+    --secondary: #00aaff;
+    --accent: #00ffcc;
+    --dark: #001133;
+    --light: #99ccff;
+    --text: #e0f0ff;
+    --warning: #ff9900;
+    --alert: #ff3300;
+}
+
+@font-face {
+    font-family: 'MotoVerse';
+    src: url('fonts/moto-verse.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neon Vortex';
+    src: url('fonts/Neon Vortex.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ================ BASE STYLES CUZ I LIKE STYLE (not really...) ================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+    color: var(--text);
+}
+
+body {
+    background-color: var(--dark);
+    background-image: url('https://imgur.com/CGzK3gG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Scanlines effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 17, 51, 0.1),
+        rgba(0, 17, 51, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1000;
+    animation: scanline 10s linear infinite;
+}
+
+/* ================ ANIMATIONS ================ */
+@keyframes scanline {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ================ TERMINAL INTRO ================ */
+#terminal-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 17, 51, 0.9);
+    z-index: 9999;
+    padding: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#terminal-text {
+    color: var(--accent);
+    font-size: 14px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    max-width: 80ch;
+}
+
+.terminal-line {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.terminal-line.visible {
+    opacity: 1;
+    height: auto;
+}
+
+/* ================ HEADER STYLES ================ */
+header {
+    background-color: rgba(0, 17, 51, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-bottom: 2px solid var(--accent);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 60px;
+    filter: drop-shadow(0 0 5px var(--accent));
+}
+
+.site-title {
+    font-family: 'Neon Vortex', 'Courier New', monospace;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--light);
+    text-shadow: 0 0 10px var(--accent);
+}
+
+/* ================ NAVIGATION STYLES ================ */
+nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-item {
+    position: relative;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 102, 204, 0.5);
+    border: 1px solid var(--secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 102, 204, 0.8);
+    border-color: var(--accent);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: rgba(0, 17, 51, 0.9);
+    border: 1px solid var(--secondary);
+    display: none;
+    z-index: 101;
+}
+
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(0, 102, 204, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 102, 204, 0.5);
+}
+
+/* ================ MAIN CONTENT LAYOUT ================ */
+main {
+    margin-top: 90px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-section {
+    background-color: rgba(0, 17, 51, 0.7);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--light);
+    border-bottom: 1px solid var(--secondary);
+    padding-bottom: 0.5rem;
+}
+
+/* ================ SIDEBAR STYLES ================ */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.system-status {
+    background-color: rgba(0, 17, 51, 0.8);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.status-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--secondary);
+    padding-bottom: 0.3rem;
+}
+
+/* ================ CONSOLE STYLES ================ */
+.mini-console {
+    height: 150px;
+    overflow: hidden;
+    background-color: rgba(0, 17, 51, 0.9);
+    border: 1px solid var(--primary);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+.console-line {
+    margin-bottom: 3px;
+    animation: fade-in 0.5s forwards;
+}
+
+/* ================ PLANET GRID STYLES ================ */
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.system-rank {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 17, 51, 0.8);
+    color: var(--accent);
+    border: 1px solid var(--secondary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', 'Arial', sans-serif; /* Futuristic font */
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 5;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+.system-rank:hover {
+    background-color: var(--primary);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+}
+
+.planet-card {
+    background-color: rgba(0, 17, 51, 0.7);
+    border: 1px solid var(--primary);
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.planet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+}
+
+.planet-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--primary);
+}
+
+.planet-info {
+    padding: 1rem;
+}
+
+.planet-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--light);
+}
+
+.planet-data {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ================ SEISMIC DISPLAY ================ */
+.seismic-display {
+    height: 80px;
+    width: 100%;
+    background-color: rgba(0, 17, 51, 0.5);
+    border: 1px solid var(--secondary);
+    overflow: hidden;
+    position: relative;
+}
+
+.seismic-wave {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+}
+
+#seismic-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* ================ PROPAGANDA SECTION, WHO DOESN'T LOVE PROPAGANDA ================ */
+.propaganda-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem;
+    background-color: rgba(0, 17, 51, 0.8);
+    border: 2px solid var(--alert);
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.propaganda-title {
+    font-size: 1rem;
+    color: var(--alert);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.propaganda-poster {
+    max-width: 90%;
+    height: auto;
+    border: 1px solid var(--alert);
+    margin: 0.5rem 0;
+}
+
+.propaganda-section .popup-button {
+    margin-top: 8px;
+}
+
+/* ================ POPUP STYLES ================ */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 17, 51, 0.95);
+    border: 2px solid var(--accent);
+    padding: 1.5rem;
+    z-index: 1000;
+    width: 400px;
+    max-width: 90vw;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+    display: none;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+.popup-title {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.popup-close {
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.popup-content {
+    margin-bottom: 1rem;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.popup-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    border: 1px solid var(--light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.popup-button:hover {
+    background-color: var(--secondary);
+}
+
+/* ================ TIME DISPLAY ================ */
+.time-display {
+    background-color: rgba(0, 17, 51, 0.8);
+    border: 1px solid var(--secondary);
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.current-time {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-top: 0.3rem;
+}
+
+/* ================ FOOTER STYLES CUZ I LIKE FEET ================ */
+footer {
+    background-color: rgba(0, 17, 51, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-top: 2px solid var(--accent);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-section {
+    text-align: left;
+}
+
+.footer-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--secondary);
+    padding-bottom: 0.3rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.3rem;
+}
+
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--light);
+}
+
+/* ================ UI ELEMENTS ================ */
+.notification-badge {
+    background-color: var(--alert);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.blink {
+    animation: blink 1.5s infinite;
+}
+
+.warning-box {
+    background-color: rgba(255, 153, 0, 0.2);
+    border: 1px solid var(--warning);
+    padding: 0.5rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.warning-icon {
+    color: var(--warning);
+    font-size: 1.5rem;
+}
+
+/* ================ DATA DISPLAY COMPONENTS ================ */
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.data-box {
+    background-color: rgba(0, 102, 204, 0.2);
+    border: 1px solid var(--primary);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.data-title {
+    font-size: 1rem;
+    color: var(--light);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(153, 204, 255, 0.3);
+    padding-bottom: 0.3rem;
+}
+
+.data-value {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(0, 17, 51, 0.5);
+    border: 1px solid var(--primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-value {
+    height: 100%;
+    background-color: var(--accent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.5s ease;
+}
+
+/* ================ UTILITY CLASSES N SHIT ================ */
+.text-warning {
+    color: var(--warning);
+}
+
+.text-alert {
+    color: var(--alert);
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.border-accent {
+    border-color: var(--accent);
+}
+
+.border-warning {
+    border-color: var(--warning);
+}
+
+.border-alert {
+    border-color: var(--alert);
+}
+
+/* ================ RESPONSIVE ADJUSTMENTS N SHIT ================ */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    nav {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-item {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .planet-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.media-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 17, 51, 0.8);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+
+.media-button {
+    background-color: var(--primary);
+    color: var(--text);
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.media-button:hover {
+    background-color: var(--secondary);
+}
+
+.discord-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.discord-button:hover {
+    background-color: var(--secondary);
+}
+
+.discord-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(2);
+}
