@@ -44,3 +44,24 @@
 
 ### UPDATE
 - Site taken down indefinitely for major total-overhauling changes to come.
+
+# MAY 2025
+
+### RELEASE-CANDIDATE V1 SNAPSHOT
+FEATURES:
+- Terminal Intro that works once per session (flashes for the first time the website is opened, but never again, unless the browser is restarted)
+- Pop-up ad. Everyone loves ads.
+- Time updater
+- Seismic Activity detector for Aspen's Mt. Abyssos region
+- Interactive planet portraits - you can click on each planet's rank number to be directed to the planet's respective webpage (currently unfinished)
+- Alert notification system (currently unfinished)
+- Mini console that flashes with commands
+
+STABLES:
+- Everglow system review
+- System Status, Population Data, Local Upcoming Events, and Active Recruitment panels
+- GOOD OLD MUSIC PLAYER (intentionally without autoplay this time)
+- Discord invite link
+- Navigation, Command Channels, and System Access portals in the footer
+- Interactive drop-down menus
+- Notifications and alerts
