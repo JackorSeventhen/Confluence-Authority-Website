@@ -65,3 +65,10 @@ STABLES:
 - Navigation, Command Channels, and System Access portals in the footer
 - Interactive drop-down menus
 - Notifications and alerts
+
+# JUNE 2025
+
+### RCV2 SNAPSHOT
+- Implemented Asteria's profile
+- Planned gallery for Asteria (currently unfinished)
+- Added an "About" entry to footer (OOC Center) (currently unfinished)
