@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteria Planetary Profile | Everglow System Report</title>
+    <link rel="icon" href="https://imgur.com/O81Aj4P.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        /* ================ ROOT VARIABLES ================ */
+        :root {
+            --primary: #0066cc;
+            --secondary: #00aaff;
+            --accent: #00ffcc;
+            --dark: #001133;
+            --light: #99ccff;
+            --text: #e0f0ff;
+            --warning: #ff9900;
+            --alert: #ff3300;
+        }
+
+        @font-face {
+            font-family: 'MotoVerse';
+            src: url('fonts/moto-verse.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Neon Vortex';
+            src: url('fonts/Neon Vortex.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ================ BASE STYLES ================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+            color: var(--text);
+        }
+
+        body {
+            background-color: var(--dark);
+            background-image: url('https://i.postimg.cc/k4XQBVbn/scr00133.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scanlines effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 17, 51, 0.1),
+                    rgba(0, 17, 51, 0.1) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            pointer-events: none;
+            z-index: 1000;
+            animation: scanline 10s linear infinite;
+        }
+
+        /* ================ ANIMATIONS ================ */
+        @keyframes scanline {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 100%;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* ================ TERMINAL INTRO ================ */
+        #terminal-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 17, 51, 0.95);
+            z-index: 9999;
+            padding: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #terminal-text {
+            color: var(--accent);
+            font-size: 14px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            max-width: 80ch;
+        }
+
+        .terminal-line {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .terminal-line.visible {
+            opacity: 1;
+            height: auto;
+        }
+
+        /* ================ HEADER STYLES ================ */
+        header {
+            background-color: rgba(0, 17, 51, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-bottom: 2px solid var(--accent);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--accent));
+        }
+
+        .site-title {
+            font-family: 'Neon Vortex', 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light);
+            text-shadow: 0 0 10px var(--accent);
+        }
+
+        /* ================ NAVIGATION STYLES ================ */
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            background-color: rgba(0, 102, 204, 0.5);
+            border: 1px solid var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: rgba(0, 102, 204, 0.8);
+            border-color: var(--accent);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background-color: rgba(0, 17, 51, 0.9);
+            border: 1px solid var(--secondary);
+            display: none;
+            z-index: 101;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid rgba(0, 102, 204, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item.active-planet {
+            background-color: rgba(0, 102, 204, 0.5);
+        }
+
+        .dropdown-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================ MAIN CONTENT LAYOUT ================ */
+        main {
+            margin-top: 100px;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 1rem;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section {
+            background-color: rgba(0, 17, 51, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--light);
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--light);
+        }
+
+        /* ================ SIDEBAR STYLES ================ */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .system-status {
+            background-color: rgba(0, 17, 51, 0.8);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            padding: 1rem;
+        }
+
+        .status-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 0.3rem;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            padding: 0.2rem 0;
+        }
+
+        /* ================ CONSOLE STYLES ================ */
+        .mini-console {
+            height: 150px;
+            overflow-y: scroll;
+            background-color: rgba(0, 17, 51, 0.9);
+            border: 1px solid var(--primary);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--accent);
+            padding: 0.5rem;
+        }
+
+        .mini-console::-webkit-scrollbar {
+            display: none;
+        }
+
+        .console-line {
+            margin-bottom: 3px;
+            animation: fade-in 0.5s forwards;
+        }
+
+        /* ================ MOON GRID ================ */
+        .moon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .moon-card {
+            background-color: rgba(0, 17, 51, 0.7);
+            border: 1px solid var(--primary);
+            padding: 1rem;
+            border-radius: 3px;
+        }
+
+        .moon-name {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .moon-data {
+            font-size: 0.9rem;
+        }
+
+
+        /* ================ OCEANIC DISPLAY ================ */
+        .oceanic-display {
+            height: 100px;
+            width: 100%;
+            background-color: rgba(0, 17, 51, 0.5);
+            border: 1px solid var(--secondary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #oceanic-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ================ PROPAGANDA SECTION ================ */
+        .propaganda-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: rgba(0, 17, 51, 0.8);
+            border: 2px solid var(--alert);
+            border-radius: 5px;
+        }
+
+        .propaganda-title {
+            font-size: 1rem;
+            color: var(--alert);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .propaganda-poster {
+            max-width: 90%;
+            height: auto;
+            border: 1px solid var(--alert);
+            margin: 0.5rem 0;
+        }
+
+        .propaganda-section .popup-button {
+            margin-top: 8px;
+        }
+
+        /* ================ POPUP STYLES ================ */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 17, 51, 0.95);
+            border: 2px solid var(--alert);
+            padding: 1.5rem;
+            z-index: 1000;
+            width: 450px;
+            max-width: 90vw;
+            box-shadow: 0 0 30px rgba(255, 51, 0, 0.7);
+            display: none;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--alert);
+            padding-bottom: 0.5rem;
+        }
+
+        .popup-title {
+            font-size: 1.2rem;
+            color: var(--alert);
+            text-transform: uppercase;
+        }
+
+        .popup-close {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .popup-content {
+            margin-bottom: 1rem;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .popup-button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            border: 1px solid var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .popup-button:hover {
+            background-color: var(--secondary);
+        }
+
+        .popup-button.alert-button {
+            background-color: var(--alert);
+        }
+
+        .popup-button.alert-button:hover {
+            opacity: 0.8;
+        }
+
+        /* ================ TIME DISPLAY ================ */
+        .time-display {
+            background-color: rgba(0, 17, 51, 0.8);
+            border: 1px solid var(--secondary);
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .current-time {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-top: 0.3rem;
+        }
+
+        /* ================ FOOTER STYLES ================ */
+        footer {
+            background-color: rgba(0, 17, 51, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1rem;
+            border-top: 2px solid var(--accent);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section {
+            text-align: left;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 0.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--light);
+        }
+
+        /* ================ UI ELEMENTS ================ */
+        .notification-badge {
+            background-color: var(--alert);
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .blink {
+            animation: blink 1.5s infinite;
+        }
+
+        .warning-box {
+            background-color: rgba(255, 153, 0, 0.2);
+            border: 1px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-box {
+            background-color: rgba(255, 51, 0, 0.2);
+            border: 1px solid var(--alert);
+        }
+
+        .warning-icon {
+            color: var(--warning);
+            font-size: 1.5rem;
+        }
+
+        .alert-icon {
+            color: var(--alert);
+        }
+
+        /* ================ MEDIA CONTROLS ================ */
+        .media-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: rgba(0, 17, 51, 0.8);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+        }
+
+        .media-button,
+        .discord-button {
+            background-color: var(--primary);
+            color: var(--text);
+            border: 1px solid var(--light);
+            border-radius: 5px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .media-button:hover,
+        .discord-button:hover {
+            background-color: var(--secondary);
+        }
+
+        .discord-icon {
+            width: 24px;
+            height: 24px;
+            filter: brightness(2);
+        }
+
+
+        /* ================ RESPONSIVE ADJUSTMENTS ================ */
+        @media (max-width: 1200px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 0.5rem;
+                position: relative;
+            }
+
+            main {
+                margin-top: 1rem;
+            }
+
+            nav {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-item {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            .moon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="terminal-intro">
+        <div id="terminal-text"></div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://imgur.com/wmX8oGB.png" alt="CIB Logo" class="logo">
+            <h1 class="site-title">ASTERIA PLANETARY PROFILE</h1>
+        </div>
+        <nav>
+            <div class="nav-item">
+                <a href="../index.html" style="text-decoration:none">HOME</a>
+            </div>
+            <div class="nav-item active">
+                PLANETARY DATA
+                <div class="dropdown">
+                    <div class="dropdown-item">Muse</div>
+                    <div class="dropdown-item">Aspen</div>
+                    <div class="dropdown-item active-planet">Asteria</div>
+                    <div class="dropdown-item">Kalliophe VII</div>
+                    <div class="dropdown-item">Nashorn</div>
+                    <div class="dropdown-item">Sevenor</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                MISSION REPORTS
+                <div class="dropdown">
+                    <div class="dropdown-item">Exploration Logs</div>
+                    <div class="dropdown-item">Scientific Data</div>
+                    <div class="dropdown-item">Colonial Status</div>
+                    <div class="dropdown-item">Incident Archive</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                INTELLIGENCE
+                <span class="notification-badge">4</span>
+                <div class="dropdown">
+                    <div class="dropdown-item">Threat Assessment</div>
+                    <div class="dropdown-item">Security Briefings</div>
+                    <div class="dropdown-item">Xaltheran Artifacts</div>
+                    <div class="dropdown-item blink">⚠️ URGENT ALERTS</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                ARCHIVES
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <div class="content-section">
+                <h2 class="section-title">CHART REPORT 9.7A SHARD SERIAL #11243</h2>
+                <p><strong>Pioneer:</strong> Confluence Charting Orbital Observatories // <strong>Discovery
+                        Date:</strong> 2791.01.24</p>
+
+                <div class="alert-box warning-box">
+                    <span class="alert-icon warning-icon">⚠️</span>
+                    <div>
+                        <strong>PLANETARY ALERT: IMMINENT 6-MOON SYZYGY.</strong> Catastrophic tidal surges expected
+                        across all coastal regions.
+                        All personnel are ordered to evacuate to designated inland shelters or orbital stations
+                        immediately.
+                        <strong>Failure to comply will result in certain death.</strong>
+                    </div>
+                </div>
+
+                <div class="alert-box warning-box">
+                    <span class="alert-icon warning-icon">⚠️</span>
+                    <div>
+                        <strong>SECURITY ALERT:</strong> Glebafracta quakes continue increasing in activity following
+                        upcoming 6-moon alignment. All research outposts on the
+                        moon are advised to remain in orbital observatories for the next 192 hours.
+                    </div>
+                </div>
+
+
+                <h3>Overview</h3>
+                <p>Asteria is a habitable terrestrial planet located within the Everglow system, located 940 light years
+                    away from the Empyreon system, and 1043 light years from Sol, discovered by the
+                    CONFLUENCE CHARTING ORBITAL OBSERVATORIES in 2722. As the third planet from Everglow, it orbits at a
+                    distance of 0.80 AU, completing a year in 260.2 Earth days. It has a diameter of 14,381 km and a
+                    mass
+                    1.4 times that of Earth, making Asteria only slightly larger and denser than our home planet. Its
+                    surface
+                    gravity is 1.1 times Earth's, making it suitable for long-term human habitation with minor
+                    physiological adaptations.</p>
+                <p>It was first colonized in 2810, and since then, Asteria has become the most important planet in the
+                    Everglow system,
+                    serving as a hub for scientific research, interstellar exploration, trade, as well as defense in its
+                    sector. It is
+                    the site of major CCOO facilities, including installations dedicated to studying the planet's unique
+                    biosphere, the six Asterian moons, the other celestial objects in Everglow and nearby systems, and
+                    the ancient ruins
+                    left behind by the extinct Xaltheran civilization.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Surface Environment & Atmosphere</h2>
+                <p>Asteria's surface is dominated by hilly regions, occasional mountain peaks, and expansive plains of
+                    subtly purple vegetation. Its flora is well-adapted to the planet's high average temperatures of
+                    40°C and slightly higher gravity. The hydrosphere covers 41% of the planet, consisting of deep
+                    oceans, sprawling seas, and smaller freshwater lakes. The deepest point, the Abyssal Scar Trench,
+                    plunges over 10 km below sea level.</p>
+                <p>The breathable atmosphere, which is composed primarily of nitrogen and oxygen, has a distinctive
+                    violet
+                    coloration due to trace amounts of stable pure iodine. This creates a special visual effect,
+                    with sunrises and sunsets marked by a breathtaking transition to deep blue. Cloud formations are
+                    mostly white, but clouds tinged faintly pink and azure have been observed across the sky,
+                    especially during the Asterian winters.</p>
+                <p>The atmosphere is breathable for humans, with a composition similar to the atmospheres of Earth and
+                    Vollaryn Prime, though slightly more humid. Its pressure
+                    is only 1.8% larger than Earth's and is mild enough for unassisted human habitation, though the
+                    heavy humidity and high temperatures can be
+                    taxing without proper acclimatization.</p>
+                <p>The most catching feature of Asteria's surface, however, is the presence of Xaltheran ruins. These
+                    ancient artificial structures date back to hundreds of millions of years and include towering spires
+                    that reach up to the clouds
+                    and vast networks of planet-wide underground tunnels. Nine City is built around nine of these
+                    spires, with its original name being "Nine Spires City".</p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Life & Biology</h2>
+                <p>Asteria supports a complex and unconventional biosphere, with terrestrial species adapted to the
+                    planet's higher gravity
+                    and aquatic species thriving in its mineral-rich oceans. The most advanced extensively-studied
+                    native lifeforms are
+                    primate-like creatures with intelligence comparable to Earth's dolphins, exhibiting a complex form
+                    of social behaviors and simple tool usage. The oceans remain largely unstudied and unexplored, but
+                    from what
+                    has been discovered, they appear to be teeming with life, much of which is bioluminescent.</p>
+                <p>As of 2865, less than 30% of all Asterian lifeforms have been studied extensively. Lack of funding
+                    and proper equipment are considered the primary setbacks on progress to fix this issue.
+                </p>
+                <p>Given the unpredictable nature of Asterian lifeforms, it is strongly advised not to venture into the
+                    wilderness without sufficient equipment and guides. Seek a trained professional on further
+                    assistance or avoid
+                    traveling outside the safety of city limits altogether.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Asteria's Moons</h2>
+                <p>The combined gravitational forces of Asteria's six moons create powerful and dangerous tidal effects.
+                    During certain alignments, tidal surges can reshape entire coastlines. All residents must tune to
+                    the local SECTOR MONITORING DIVISION for alerts.</p>
+                <div class="moon-grid">
+                    <div class="moon-card">
+                        <h3 class="moon-name">1. Glebafracta</h3>
+                        <p class="moon-data">The smallest moon, marked by surface cracks from tidal
+                            forces. Geologically very active.</p>
+                    </div>
+                    <div class="moon-card">
+                        <h3 class="moon-name">2. Asparagus</h3>
+                        <p class="moon-data">The largest moon. Its gravity stabilizes Asteria's
+                            axial tilt and mild seasons.</p>
+                    </div>
+                    <div class="moon-card">
+                        <h3 class="moon-name">3. Cleftglow</h3>
+                        <p class="moon-data">Known for its polar crystalline formations, making it very reflective in
+                            the night sky.</p>
+                    </div>
+                    <div class="moon-card">
+                        <h3 class="moon-name">4. Voldemort</h3>
+                        <p class="moon-data">The brightest moon, covered in smooth reflective ice with a thin
+                            detectable atmosphere.</p>
+                    </div>
+                    <div class="moon-card">
+                        <h3 class="moon-name">5. Aetheria</h3>
+                        <p class="moon-data">The source of Asteria's faint outer dust ring, caused by active subsurface
+                            geysers ejecting water ice.</p>
+                    </div>
+                    <div class="moon-card">
+                        <h3 class="moon-name">6. Torvus</h3>
+                        <p class="moon-data">The darkest and most heavily cratered moon, its surface is scarred by
+                            countless impact events.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Human Presence</h2>
+                <p>Asteria is home to over 130 million human colonists as of 2865, with its population growing rapidly
+                    since the establishment of Nine City in 2810, on the northern-hemispheric continent Contrition. The
+                    planet has a
+                    strategic location, abundant resources,
+                    and Xaltheran ruins, which have made it a focal point for scientific and economic activity in the
+                    Everglow
+                    system. Nine City serves as the planet's cultural and administrative hub. There exists many other
+                    major settlements,
+                    like the city of Vopniuj on the continent of Identation.
+                    There also exists numerous specially-engineered coastal cities, like Farkreth, and approximately 65
+                    inland research
+                    outposts.</p>
+                <blockquote>
+                    <p>"Asteria is the beating heart of human expansion in the Outer Rims."</p>
+                    - Layla Fath, Former Director of Outer Rim Colonization (2788-2847)
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="time-display">
+                <div>CONFEDERATION STANDARD TIME</div>
+                <div class="current-time" id="current-time">--:--:--</div>
+                <div id="date-display">STARDATE 2874.Q1.W5</div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">ASTERIA PLANETARY STATUS</div>
+                <div class="status-item"><span>Planetary Shield:</span> <span
+                        style="color: var(--accent);">ONLINE</span></div>
+                <div class="status-item"><span>Tidal Defenses:</span> <span class="blink"
+                        style="color: var(--alert);">OFFLINE</span></div>
+                <div class="status-item"><span>Orbital Network:</span> <span style="color: var(--accent);">ONLINE</span>
+                </div>
+                <div class="status-item"><span>Evacuation Status:</span> <span style="color: var(--warning);">IN
+                        PROGRESS</span></div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">NCZ-44~93 AREA TIDAL SURGE MONITOR</div>
+                <div class="oceanic-display">
+                    <canvas id="oceanic-canvas"></canvas>
+                </div>
+                <div style="text-align: center; font-size: 0.8rem; margin-top: 0.5rem; color: var(--alert);">
+                    FATAL WAVE HEIGHTS DETECTED
+                </div>
+            </div>
+
+            <div class="mini-console" id="mini-console">
+                <div class="console-line">> system.init() stardate: 2874.Q1.W5</div>
+                <div class="console-line">> connecting to NINE CITY orbital hub...</div>
+                <div class="console-line">> connection established</div>
+                <div class="console-line">> loading tidal sensor data...</div>
+                <div class="console-line" style="color: var(--alert);">> CRITICAL ALERT: 6-MOON ALIGNMENT IMMINENT</div>
+                <div class="console-line">> awaiting command input...</div>
+            </div>
+
+            <div class="system-status">
+                <div class="status-title">LOCAL UPCOMING EVENTS</div>
+                <div class="status-item"><span>6-Moon Alignment:</span> <span style="color: var(--alert);">1d 9h</span>
+                </div>
+                <div class="status-item"><span>Coastal Evac Deadline:</span> <span
+                        style="color: var(--warning);">19h</span></div>
+                <div class="status-item"><span>Supply Ship ETA:</span> <span>3d 7h</span></div>
+                <div class="status-item"><span>Xaltheran Council:</span> <span>12h</span></div>
+            </div>
+
+            <div class="propaganda-section">
+                <h3 class="propaganda-title">SERVE THE CONFLUENCE</h3>
+                <img src="https://imgur.com/SUuCfqL.jpg" alt="Propaganda Poster" class="propaganda-poster">
+                <p style="font-size: 0.9rem; text-align: center;">The Space Corps needs able-bodied volunteers for
+                    defensive positions around Outrim-7 and Outrim-9. Join the ranks of the Hegemon today and enjoy
+                    special benefits.</p>
+                <button class="popup-button" onclick="showRecruitmentPopup()">ENLIST TODAY</button>
+            </div>
+
+            <div class="media-controls">
+                <button id="musicToggle" class="media-button" title="Play/Pause Background Music">
+                    <span id="playIcon">▶</span><span id="pauseIcon" style="display:none;">⏸</span>
+                </button>
+                <a href="https://discord.gg/4w2JZXjQBT" target="_blank" class="discord-button" title="Join our Discord">
+                    <img src="https://imgur.com/fy9nEQt.png" alt="Discord" class="discord-icon">
+                </a>
+                <audio id="bgMusic" loop>
+                    <source src="../media/ambiancemain.m4a" type="audio/mp4">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="asteriapics.html" class="popup-button" style="display: inline-block; width: 80%;">GALLERY</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">NAVIGATION</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Planetary Database</a></li>
+                    <li><a href="#">CCOO Archives</a></li>
+                    <li><a href="#">Colonial Registry</a></li>
+                    <li><a href="#">Mission Control</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">COMMAND CHANNELS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Emergency Protocols</a></li>
+                    <li><a href="#">Sector Monitoring Division</a></li>
+                    <li><a href="#">Resource Allocation</a></li>
+                    <li><a href="#">Security Briefings</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">SYSTEM ACCESS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login Portal</a></li>
+                    <li><a href="#">Clearance Request</a></li>
+                    <li><a href="#">Report Submission</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="../about.html">OOC Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            CONFLUENCE INTELLIGENCE BUREAU © 2874 | CLASSIFIED LEVEL: KELLINETH
+        </div>
+    </footer>
+
+    <div class="popup" id="tidal-alert-popup">
+        <div class="popup-header">
+            <div class="popup-title">⚠️ PLANETARY EVACUATION ORDER ⚠️</div>
+            <button class="popup-close" onclick="hideTidalAlertPopup()">×</button>
+        </div>
+        <div class="popup-content">
+            <p><strong>IMMEDIATE ACTION REQUIRED.</strong> A catastrophic tidal event caused by the 6-moon syzygy is
+                imminent.</p>
+            <p>All coastal and lowland populations are under a <strong>MANDATORY EVACUATION ORDER</strong>. Proceed to
+                the nearest designated inland shelter or spaceport immediately. This is not a drill.</p>
+            <p><strong>Resist or delay at your own peril. Survival is not guaranteed.</strong></p>
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" onclick="hideTidalAlertPopup()">ACKNOWLEDGE & HIDE</button>
+            <button class="popup-button alert-button" onclick="window.location.href='#'">VIEW EVAC ROUTES</button>
+        </div>
+    </div>
+
+    <div class="popup" id="recruitment-popup" style="border-color: var(--accent);">
+        <div class="popup-header" style="border-color: var(--accent);">
+            <div class="popup-title" style="color: var(--accent);">RECRUITMENT INQUIRY</div>
+            <button class="popup-close" onclick="hideRecruitmentPopup()">×</button>
+        </div>
+        <div class="popup-content">
+            <p>Thank you for your interest in serving the Confluence. Although military recruitment has currently
+                reached maximum capacity, you may still enlist through the Everglow Initiative.</p>
+            <p>Nine City research teams require specialists with expertise in xenoarchaeology and Xaltheran artifacts.
+                All applicants must undergo comprehensive security screening and psychological evaluation.</p>
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" onclick="hideRecruitmentPopup()">IGNORE AND HIDE</button>
+            <button class="popup-button" style="background-color: var(--secondary);">PROCEED TO APPLICATION</button>
+        </div>
+    </div>
+
+    <script>
+        // Terminal intro text
+        const terminalLines = [
+            "CONNECTING TO ASTERIA SECTOR MONITORING DIVISION...",
+            "AUTHENTICATING CLEARANCE LEVEL: KELLINETH...",
+            "DECRYPTING C.C.O.O. DATA STREAM 9.7A...",
+            "ACCESSING NINE CITY CENTRAL HUB...",
+            "LOADING PLANETARY PROFILE: ASTERIA (III)...",
+            "COMPILING XALTHERAN RUIN SURVEY DATA...",
+            "RETRIEVING BIOSPHERE ANALYSIS...",
+            "CALIBRATING ORBITAL PATHS FOR 6 LUNAR BODIES...",
+            "ACCESSING TIDAL PREDICTION MODELS...",
+            "...",
+            "!! CRITICAL ALERT: CATASTROPHIC SYZYGY EVENT DETECTED !!",
+            "!! TIDAL SURGE PROBABILITY: 99.87% !!",
+            "!! EVACUATION PROTOCOL 7-GAMMA INITIATED !!",
+            "...",
+            "LOADING HUMAN PRESENCE CENSUS DATA...",
+            "SYNCHRONIZING STARDATE...",
+            "RENDERING INTERFACE...",
+            "SUCCESS. WELCOME."
+        ];
+
+        // terminal intro with randomized timing
+        const terminalText = document.getElementById('terminal-text');
+        const terminalIntro = document.getElementById('terminal-intro');
+
+        let lineIndex = 0;
+        function displayNextLine() {
+            if (lineIndex < terminalLines.length) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line visible';
+                line.textContent = terminalLines[lineIndex];
+                if (terminalLines[lineIndex].includes("!!")) {
+                    line.style.color = 'var(--alert)';
+                }
+                terminalText.appendChild(line);
+                terminalText.scrollTop = terminalText.scrollHeight;
+                lineIndex++;
+
+                const randomDelay = Math.floor(Math.random() * (300 - 50 + 1)) + 50; // Random delay between 50ms and 300ms
+                setTimeout(displayNextLine, randomDelay);
+            } else {
+                setTimeout(() => {
+                    terminalIntro.style.opacity = '0';
+                    terminalIntro.style.transition = 'opacity 1s ease';
+                    setTimeout(() => {
+                        terminalIntro.style.display = 'none';
+                    }, 1000);
+                }, 1000);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const introShown = sessionStorage.getItem('terminalIntroShown');
+            if (!introShown) {
+                setTimeout(displayNextLine, 500);
+                sessionStorage.setItem('terminalIntroShown', 'true');
+            } else {
+                terminalIntro.style.display = 'none';
+            }
+        });
+
+        // time updater function
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // mini console functionality
+        const consoleCommands = [
+            "> REROUTING POWER TO PLANETARY SHIELDS...",
+            "> ANALYZING AETHERIA DUST RING COMPOSITION...",
+            "> WARNING: UNSTABLE READINGS FROM GLEBAFRACTA",
+            "> TRACKING EVACUATION FLEET OMEGA...",
+            "> XALTHERAN SPIRE #8 ENERGY OUTPUT FLUCTUATING",
+            "> CROSS-REFERENCING CLEFTGLOW ALBEDO DATA...",
+            "> INITIATING COASTAL SENSOR SWEEP...",
+            "> ERROR: SENSOR K-14 OFFLINE - PRESUMED LOST",
+            "> CALCULATING TIDAL STRESS ON CRUSTAL PLATES...",
+            "> FATAL EVENT IMMINENT."
+        ];
+
+        const consoleElement = document.getElementById('mini-console');
+        function addConsoleMessage() {
+            const randomCommand = consoleCommands[Math.floor(Math.random() * consoleCommands.length)];
+            const lineElement = document.createElement('div');
+            lineElement.className = 'console-line';
+            lineElement.textContent = randomCommand;
+            if (randomCommand.includes("WARNING") || randomCommand.includes("FATAL") || randomCommand.includes("ERROR")) {
+                lineElement.style.color = 'var(--warning)';
+            }
+            consoleElement.appendChild(lineElement);
+            while (consoleElement.childElementCount > 10) {
+                consoleElement.removeChild(consoleElement.firstChild);
+            }
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+            setTimeout(addConsoleMessage, Math.random() * 4000 + 2000);
+        }
+        setTimeout(addConsoleMessage, 3000);
+
+        const oceanicCanvas = document.getElementById('oceanic-canvas');
+        const oceanicCtx = oceanicCanvas.getContext('2d');
+
+        function resizeCanvas() {
+            oceanicCanvas.width = oceanicCanvas.offsetWidth;
+            oceanicCanvas.height = oceanicCanvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let oceanicData = [];
+        const dataPoints = 100;
+        function initOceanicData() {
+            oceanicData = [];
+            for (let i = 0; i < dataPoints; i++) {
+                oceanicData.push(Math.sin(i / 10) * 5 + (Math.random() * 3 - 1.5));
+            }
+        }
+        function updateOceanicData() {
+            oceanicData.shift();
+            const lastValue = oceanicData[oceanicData.length - 1];
+            let newValue = lastValue + (Math.random() * 4 - 2);
+            if (Math.random() < 0.15) {
+                newValue += (Math.random() * 40 - 20);
+            }
+            oceanicData.push(newValue);
+            oceanicData[oceanicData.length - 1] = Math.max(-45, Math.min(45, oceanicData[oceanicData.length - 1]));
+        }
+
+        function drawOceanicWave() {
+            const width = oceanicCanvas.width;
+            const height = oceanicCanvas.height;
+            const centerY = height / 2;
+            oceanicCtx.clearRect(0, 0, width, height);
+
+            oceanicCtx.strokeStyle = 'rgba(255, 51, 0, 0.2)';
+            oceanicCtx.lineWidth = 1;
+            for (let y = 0; y <= height; y += height / 4) { oceanicCtx.beginPath(); oceanicCtx.moveTo(0, y); oceanicCtx.lineTo(width, y); oceanicCtx.stroke(); }
+            for (let x = 0; x <= width; x += width / 10) { oceanicCtx.beginPath(); oceanicCtx.moveTo(x, 0); oceanicCtx.lineTo(x, height); oceanicCtx.stroke(); }
+
+            oceanicCtx.strokeStyle = 'rgba(255, 153, 0, 0.8)';
+            oceanicCtx.lineWidth = 2;
+            oceanicCtx.beginPath();
+            const pointSpacing = width / dataPoints;
+            for (let i = 0; i < oceanicData.length; i++) {
+                const x = i * pointSpacing;
+                const y = centerY - oceanicData[i] * (height / 100);
+                if (i === 0) { oceanicCtx.moveTo(x, y); } else { oceanicCtx.lineTo(x, y); }
+            }
+            oceanicCtx.stroke();
+
+            oceanicCtx.shadowBlur = 10;
+            oceanicCtx.shadowColor = 'rgba(255, 51, 0, 0.8)';
+            oceanicCtx.stroke();
+            oceanicCtx.shadowBlur = 0;
+        }
+
+        function animateOceanic() {
+            updateOceanicData();
+            drawOceanicWave();
+            requestAnimationFrame(animateOceanic);
+        }
+        initOceanicData();
+        animateOceanic();
+
+        const tidalPopup = document.getElementById('tidal-alert-popup');
+        const recruitmentPopup = document.getElementById('recruitment-popup');
+        function showTidalAlertPopup() { tidalPopup.style.display = 'block'; }
+        function hideTidalAlertPopup() { tidalPopup.style.display = 'none'; }
+        function showRecruitmentPopup() { recruitmentPopup.style.display = 'block'; }
+        function hideRecruitmentPopup() { recruitmentPopup.style.display = 'none'; }
+
+        setTimeout(showTidalAlertPopup, 8000);
+
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+
+        musicToggle.addEventListener('click', function () {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
+            } else {
+                bgMusic.pause();
+                playIcon.style.display = 'inline';
+                pauseIcon.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
