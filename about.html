@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOC Center | About the Author</title>
+    <link rel="icon" href="https://imgur.com/O81Aj4P.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="fonts/moto-verse.otf" as="font" type="font/otf" crossorigin>
+
+    <style>
+        body {
+            background-image: url('https://i.postimg.cc/6qVdhHg9/mac-os-x-rancho-cucamonga-night-5k-4s.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .blinking-cursor {
+            color: var(--accent);
+            animation: cursor-blink 1s step-end infinite;
+        }
+
+        #console-input-line {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            /* Pushes the input to the bottom */
+        }
+
+        #console-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .console-response-success {
+            color: var(--accent);
+            animation: flash-success 0.7s ease-out;
+        }
+
+        .console-response-failure {
+            color: var(--alert);
+            animation: flash-failure 0.7s ease-out;
+        }
+
+        @keyframes cursor-blink {
+
+            from,
+            to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes flash-success {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+                color: var(--light);
+            }
+        }
+
+        @keyframes flash-failure {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+                color: var(--warning);
+            }
+        }
+
+        #mini-console-ooc {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://imgur.com/wmX8oGB.png" alt="CIB Logo" class="logo">
+            <h1 class="site-title">OOC CENTER | J7</h1>
+        </div>
+        <nav>
+            <div class="nav-item">
+                <a href="index.html" style="text-decoration:none; color: inherit;">HOME</a>
+            </div>
+            <div class="nav-item">
+                PLANETARY DATA
+                <div class="dropdown">
+                    <div class="dropdown-item">Muse</div>
+                    <div class="dropdown-item">Aspen</div>
+                    <div class="dropdown-item">
+                        <a href="planets/asteriaprofile.html" style="text-decoration:none">Asteria</a>
+                    </div>
+                    <div class="dropdown-item">Kalliophe VII</div>
+                    <div class="dropdown-item">Nashorn</div>
+                    <div class="dropdown-item">Sevenor</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                MISSION REPORTS
+                <div class="dropdown">
+                    <div class="dropdown-item">Exploration Logs</div>
+                    <div class="dropdown-item">Scientific Data</div>
+                    <div class="dropdown-item">Colonial Status</div>
+                    <div class="dropdown-item">Incident Archive</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                INTELLIGENCE
+                <span class="notification-badge">4</span>
+                <div class="dropdown">
+                    <div class="dropdown-item">Threat Assessment</div>
+                    <div class="dropdown-item">Security Briefings</div>
+                    <div class="dropdown-item">Xaltheran Artifacts</div>
+                    <div class="dropdown-item blink">⚠️ URGENT ALERTS</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                ARCHIVES
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <div class="content-section" style="text-align: center;">
+                <p style="font-size: 2rem;">Hi.</p>
+                <img src="https://i.postimg.cc/L5rPH42x/de5433e1-f283-43af-865b-66f71982949a.jpg" alt="Author avatar"
+                    style="max-width: 200px; border: 2px solid var(--accent); border-radius: 5px; margin-top: 1rem; margin-bottom: 1rem;">
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">WHO TF AM I?</h2>
+                <p>Welcome, individual. Let's not get any formalities involved because they make me feel awkward. People
+                    call me stuff: <strong>Saladin</strong>, which is the name on my official documents;
+                    <strong>Salah</strong>, used by the few humans I interact with offline; <strong>Jackor</strong>, my
+                    digital footprint; and <strong>Jack</strong>, the
+                    abbreviated version. I, however, refer to myself as <strong>J7</strong>. You're
+                    welcome to use any of
+                    them. Most people on the internet go with Jack, which works out since that's primarily where I
+                    exist.
+                    Am from Egypt. It's a... Place I guess. Let's move on before this gets too personal.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">LIKES 'N DISLIKES N STUFF</h2>
+                <p>Here is a meticulously cataloged list of stimuli, categorized by the neural response they typically
+                    elicit. One list contains things that make existence slightly more tolerable. The other... Doesn't.
+                </p>
+
+                <div class="data-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+
+                    <div class="data-box" style="border-color: var(--accent);">
+                        <div class="data-title" style="color: var(--accent); border-color: var(--accent);">POSITIVE
+                            STIMULI (LIKES)</div>
+                        <ul style="list-style-type: '» '; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
+                            <li>The void of space. It's pretty.</li>
+                            <li>Rewriting historical events, but the ones where I can commit atrocities.</li>
+                            <li>STARSET. Good songs.</li>
+                            <li>My country, sometimes.</li>
+                            <li>Maps. All of them. Give me maps.</li>
+                            <li>Napping. A lot.</li>
+                            <li>Cyberpunk dystopias.</li>
+                            <li>Putting things off until tomorrow. Or the day after.</li>
+                            <li>Practicing writing.</li>
+                            <li>Synthwave. My ears are probably bleeding synthwave by now.</li>
+                            <li>Boring games that are secretly not boring (HOI4, CK3, EU4, etc).</li>
+                            <li>Jokes that make you question my sanity.</li>
+                            <li>My family, I guess. They feed me.</li>
+                            <li>Becoming a vessel for coffee.</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-box" style="border-color: var(--alert);">
+                        <div class="data-title" style="color: var(--alert); border-color: var(--alert);">NEGATIVE
+                            STIMULI (DISLIKES)</div>
+                        <ul style="list-style-type: '» '; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
+                            <li>Trying hard. Ew.</li>
+                            <li>When I accidentally spill the coffee (it happens more often than it should)</li>
+                            <li>The state of being alone.</li>
+                            <li>The state of being surrounded by other humans.</li>
+                            <li>My screwed-up, hell-pit, failed-state of a country.</li>
+                            <li>The institution known as "college".</li>
+                            <li>This list. Am running out of things to dislike.</li>
+                            <li>Me.</li>
+                            <li>The general vicinity of my home.</li>
+                            <li>The people in the general vicinity of my home.</li>
+                            <li>The crushing weight of my own insignificance.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 0.8rem; text-align: center; color: var(--light);">Current
+                    biological age is clocked at 20 rotations around the local star.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">SOME MORE STUFF</h2>
+                <p>Sometimes I just... Poof- vanish. Gone. It's partly because I enjoy the sound of silence and my own
+                    thoughts, and partly
+                    because my internet is on a leash. Here in Aegyptus, we pay for internet by the gigabyte, like it's
+                    some rare spice or what. So I
+                    have to ration it. Don't be surprised if I disappear mid-conversation; my data plan probably just
+                    died. I try not to be offensive. Most of the time. My communication skills are a work in progress. I
+                    either say nothing or write a novel. There is no in-between- well, unless I was trying to say
+                    something cocky, this is the only instance where I will say one-liners. But usually I will just
+                    write a twelve-line monologue about why I think next year will be horrendous or I will just say
+                    "okay".</p>
+                <p style="margin-top: 1rem;">Socially, am about as smooth as a bag of rocks. But I do like people. Some
+                    of them, anyway. There are a few folks I have to talk to every day or my brain does a bluescreen.
+                    YOU KNOW YOURSELF!! In my spare time, I like to travel back in time by installing
+                    Windows 95 or so on a virtual machine and using it for a while, alongside other similar
+                    time-wasters. Am also trying to learn code. This
+                    website is the result. Please don't look too closely at the seams.</p>
+                <p style="margin-top: 1rem;">I enjoy games, or I would, if my computer wasn't powered by a sickly
+                    hamster on a wheel made of rusted iron and breaks every 2 minutes. But am working on that. I also
+                    like space though mostly on a surface level. I don't need to know the complex physics; I just like
+                    to look at
+                    pretty planets in SpaceEngine and imagine what kind of civilizations could live there. It's a
+                    beautiful piece of
+                    software, and it's where all the planet pictures for the Everglow System came from.</p>
+                <div class="warning-box" style="margin-top: 1rem;">
+                    <span class="warning-icon">⚠️</span>
+                    <div>
+                        <strong>FRIENDSHIP DISCLAIMER:</strong> Am objectively terrible at making friends and even worse
+                        at keeping them. If you wish to engage in the perilous quest of becoming my friend, proceed with
+                        caution. I hope it's not too much of a problem.
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">FINAL NOTE</h2>
+                <p style="margin-top: 1rem;">So yeah, am demonstrably terrible at forming and maintaining
+                    friendships. However, this is a known bug that am actively working to patch. Though if you would
+                    like to be my friend, here is a list of a few things to keep in mind first:</p>
+                <p style="margin-top: 1rem;">1- Don't.</p>
+                <p style="margin-top: 2rem; text-align: center;">You can reach me on Discord: <br><strong
+                        class="text-accent" style="font-size: 1.2rem;">jackorseventhen</strong></p>
+            </div>
+
+            <div class="content-section" style="text-align: center;">
+                <p style="font-size: 2rem; margin-bottom: 1rem;">Bye.</p>
+                <img src="https://i.postimg.cc/KvML0TDw/dbe54fe8-0272-43a8-91fa-75d094b57106.jpg" alt="Goodbye image"
+                    style="max-width: 100%; max-height: 400px; border: 2px solid var(--secondary); border-radius: 5px;">
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="system-status">
+                <div class="status-title">LIVE PSYCHE-ANALYSIS</div>
+                <div class="data-box" style="margin-top: 1rem;">
+                    <div class="data-title">Caffeine Saturation</div>
+                    <div class="data-value" id="stat-caffeine">--%</div>
+                    <div class="progress-bar">
+                        <div class="progress-value" id="progress-caffeine" style="background-color: #8b4513;"></div>
+                    </div>
+                </div>
+                <div class="data-box" style="margin-top: 1rem;">
+                    <div class="data-title">Procrastination Index</div>
+                    <div class="data-value" id="stat-procrastination">--%</div>
+                    <div class="progress-bar">
+                        <div class="progress-value" id="progress-procrastination"
+                            style="background-color: var(--warning);"></div>
+                    </div>
+                </div>
+                <div class="data-box" style="margin-top: 1rem;">
+                    <div class="data-title">Social Battery</div>
+                    <div class="data-value" id="stat-social">--%</div>
+                    <div class="progress-bar">
+                        <div class="progress-value" id="progress-social" style="background-color: var(--secondary);">
+                        </div>
+                    </div>
+                </div>
+                <div class="data-box" style="margin-top: 1rem;">
+                    <div class="data-title">Cognitive Dissonance</div>
+                    <div class="data-value" id="stat-dissonance">--%</div>
+                    <div class="progress-bar">
+                        <div class="progress-value" id="progress-dissonance" style="background-color: var(--alert);">
+                        </div>
+                    </div>
+                </div>
+                <div class="data-box" style="margin-top: 1rem;">
+                    <div class="data-title">Hannah Exposure</div>
+                    <div class="data-value" id="stat-synthwave">-- hrs</div>
+                    <div class="progress-bar">
+                        <div class="progress-value" id="progress-synthwave" style="background-color: #ff00ff;"></div>
+                    </div>
+                </div>
+                <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: var(--light);">Data stream
+                    live. Values fluctuate based on user activity - refresh for updated
+                    readings.</p>
+            </div>
+
+            <div class="mini-console" id="mini-console-ooc">
+                <div id="console-log"></div>
+                <div id="console-input-line">
+                    <span>> </span>
+                    <input type="text" id="console-input" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">NAVIGATION</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Planetary Database</a></li>
+                    <li><a href="#">CCOO Archives</a></li>
+                    <li><a href="#">Colonial Registry</a></li>
+                    <li><a href="#">Mission Control</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">COMMAND CHANNELS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Emergency Protocols</a></li>
+                    <li><a href="#">Sector Monitoring Division</a></li>
+                    <li><a href="#">Resource Allocation</a></li>
+                    <li><a href="#">Security Briefings</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">SYSTEM ACCESS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login Portal</a></li>
+                    <li><a href="#">Clearance Request</a></li>
+                    <li><a href="#">Report Submission</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="about.html">OOC Center</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            CONFLUENCE INTELLIGENCE BUREAU © 2874 | CLASSIFIED LEVEL: KELLINETH
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function updateProceduralStat(config) {
+                const { id, storageKey, min, max, decayRate, spikeChance, spikeRange, isTimeCounter } = config;
+                const statElement = document.getElementById(`stat-${id}`);
+                const progressElement = document.getElementById(`progress-${id}`);
+                if (!statElement || !progressElement) return;
+                const now = Date.now();
+                const lastVisit = localStorage.getItem(`${storageKey}_timestamp`);
+                let lastValue = parseFloat(localStorage.getItem(storageKey));
+                if (isNaN(lastValue)) { lastValue = min + (max - min) / 2; }
+                if (lastVisit) {
+                    const elapsedHours = (now - lastVisit) / (1000 * 60 * 60);
+                    if (isTimeCounter) { lastValue += elapsedHours; }
+                    else {
+                        const decay = decayRate * elapsedHours;
+                        lastValue -= decay;
+                        const fluctuation = (Math.random() - 0.5) * elapsedHours * 15;
+                        lastValue += fluctuation;
+                        if (elapsedHours < 2 / 60) {
+                            const tinyChange = (Math.random() * 4 - 2);
+                            lastValue += tinyChange;
+                        }
+                        if (Math.random() < spikeChance) {
+                            const spike = spikeRange[0] + Math.random() * (spikeRange[1] - spikeRange[0]);
+                            lastValue += spike;
+                        }
+                    }
+                }
+                let finalValue = Math.max(min, Math.min(max, lastValue));
+                if (isTimeCounter) { statElement.textContent = `${finalValue.toFixed(1)} hrs`; }
+                else { statElement.textContent = `${Math.round(finalValue)}%`; }
+                progressElement.style.width = `${((finalValue - min) / (max - min)) * 100}%`;
+                localStorage.setItem(storageKey, finalValue);
+                localStorage.setItem(`${storageKey}_timestamp`, now);
+            }
+
+            const statsConfig = [
+                { id: 'caffeine', storageKey: 'j7_stat_caffeine', min: 0, max: 100, decayRate: 40, spikeChance: 0.25, spikeRange: [30, 50] },
+                { id: 'procrastination', storageKey: 'j7_stat_procrastination', min: 20, max: 100, decayRate: -30, spikeChance: 0.15, spikeRange: [15, 30] },
+                { id: 'social', storageKey: 'j7_stat_social', min: 0, max: 100, decayRate: 15, spikeChance: 0.1, spikeRange: [40, 70] },
+                { id: 'dissonance', storageKey: 'j7_stat_dissonance', min: 10, max: 90, decayRate: 0, spikeChance: 0.4, spikeRange: [-25, 25] },
+                { id: 'synthwave', storageKey: 'j7_stat_synthwave', min: 0, max: 10000, isTimeCounter: true },
+            ];
+            statsConfig.forEach(config => updateProceduralStat(config));
+
+            const consoleLog = document.getElementById('console-log');
+            const consoleInput = document.getElementById('console-input');
+            const consoleInputLine = document.getElementById('console-input-line');
+            const consoleContainer = document.getElementById('mini-console-ooc');
+            let isTyping = false;
+
+            const successMessages = ["COMMAND ACCEPTED. PROCESSING...", "QUERY RECEIVED. EXECUTING...", "INPUT PARSED. AWAITING SYSTEM RESPONSE.", "ROUTING TO SUB-PROCESSOR... OK.", "DIRECTIVE CONFIRMED."];
+            const failureMessages = ["COMMAND NOT RECOGNIZED. SYNTAX ERROR?", "ACCESS DENIED. INSUFFICIENT CLEARANCE.", "ACCESS DENIED. YOU ARE RETARDED.", "QUERY FAILED. YOU ARE NOT SMART ENOUGH.", "ERROR: MEMORY OVERFLOW AT 0x7b. ABORTING.", "DIRECTIVE REJECTED.", "PISS OFF."];
+
+            function addLineToConsole(text, cssClass = '') {
+                const lineElement = document.createElement('div');
+                lineElement.className = 'console-line';
+                if (cssClass) lineElement.classList.add(cssClass);
+                lineElement.textContent = text;
+                consoleLog.appendChild(lineElement);
+                if (consoleLog.childElementCount > 10) { consoleLog.removeChild(consoleLog.firstChild); }
+                consoleContainer.scrollTop = consoleContainer.scrollHeight;
+            }
+
+            consoleInput.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' && consoleInput.value.trim() !== '' && !isTyping) {
+                    event.preventDefault();
+                    const command = consoleInput.value;
+                    addLineToConsole(`> ${command}`);
+                    consoleInput.value = '';
+
+                    setTimeout(() => {
+                        const isSuccess = Math.random() > 0.4; // 60% chance of success
+                        if (isSuccess) {
+                            const message = successMessages[Math.floor(Math.random() * successMessages.length)];
+                            addLineToConsole(message, 'console-response-success');
+                        } else {
+                            const message = failureMessages[Math.floor(Math.random() * failureMessages.length)];
+                            addLineToConsole(message, 'console-response-failure');
+                        }
+                    }, 200);
+                }
+            });
+
+            const oocConsoleCommands = ["> analyzing user...", "> containing Jack's sillyness...", "> cross-referencing 'likes' and 'dislikes'...", "> ERROR: PARADOX DETECTED IN 'country' VARIABLE.", "> bandwidth rationing protocols engaged.", "> scanning for Windows 9x emulation...", "> found: 1 active instance(s).", "> monitoring synthwave intake levels...", "> ALERT: unhealthy levels detected.", "> recalibrating social interaction module...", "> found: 4 active instance(s).", "> ...failed. Module is awkward.", "> compiling hypocrisy report..."];
+
+            function typeLine(text, callback) {
+                const lineElement = document.createElement('div');
+                lineElement.className = 'console-line';
+                consoleLog.appendChild(lineElement);
+                let i = 0;
+                isTyping = true;
+                consoleInput.disabled = true;
+                const typingInterval = setInterval(() => {
+                    if (i < text.length) {
+                        lineElement.innerHTML = text.substring(0, i + 1) + '<span class="blinking-cursor">█</span>';
+                        i++;
+                    } else {
+                        clearInterval(typingInterval);
+                        lineElement.innerHTML = text;
+                        isTyping = false;
+                        consoleInput.disabled = false;
+                        if (callback) callback();
+                    }
+                }, 50);
+            }
+
+            function runAutomatedConsole() {
+                const randomCommand = oocConsoleCommands[Math.floor(Math.random() * oocConsoleCommands.length)];
+                typeLine(randomCommand, () => {
+                    if (consoleLog.childElementCount > 10) { consoleLog.removeChild(consoleLog.firstChild); }
+                    consoleContainer.scrollTop = consoleContainer.scrollHeight;
+                    setTimeout(runAutomatedConsole, Math.random() * 4000 + 3000);
+                });
+            }
+
+            typeLine("> system.ooc.init()", () => {
+                setTimeout(runAutomatedConsole, 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>
