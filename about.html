@@ -22,11 +22,16 @@
             animation: cursor-blink 1s step-end infinite;
         }
 
+        #console-log {
+            flex-grow: 1; /* Allows the log to take up available space */
+            overflow-y: auto; /* Enables scrolling only for the log */
+            padding-bottom: 1em; /* Creates the empty buffer line space */
+        }
+
         #console-input-line {
             display: flex;
             align-items: center;
-            margin-top: auto;
-            /* Pushes the input to the bottom */
+            flex-shrink: 0; /* Prevents the input line from shrinking */
         }
 
         #console-input {
@@ -89,8 +94,13 @@
         }
 
         #mini-console-ooc {
-            display: flex;
-            flex-direction: column;
+                display: flex;
+                flex-direction: column;
+                height: 150px; /* Ensures a fixed height for the container */
+        }
+
+        .console-user-command {
+                color: var(--secondary);
         }
     </style>
 </head>
@@ -188,9 +198,11 @@
                             <li>Practicing writing.</li>
                             <li>Synthwave. My ears are probably bleeding synthwave by now.</li>
                             <li>Boring games that are secretly not boring (HOI4, CK3, EU4, etc).</li>
+                            <li>Milk with coffee or tea.</li>
                             <li>Jokes that make you question my sanity.</li>
                             <li>My family, I guess. They feed me.</li>
                             <li>Becoming a vessel for coffee.</li>
+                            <li>Hannah's loaf breads with cherries on top.</li>
                         </ul>
                     </div>
 
@@ -204,6 +216,7 @@
                             <li>The state of being surrounded by other humans.</li>
                             <li>My screwed-up, hell-pit, failed-state of a country.</li>
                             <li>The institution known as "college".</li>
+                            <li>Lack of milk.</li>
                             <li>This list. Am running out of things to dislike.</li>
                             <li>Me.</li>
                             <li>The general vicinity of my home.</li>
@@ -303,7 +316,7 @@
                     </div>
                 </div>
                 <div class="data-box" style="margin-top: 1rem;">
-                    <div class="data-title">Hannah Exposure</div>
+                    <div class="data-title">YEARLY DOSE OF HANNAH</div>
                     <div class="data-value" id="stat-synthwave">-- hrs</div>
                     <div class="progress-bar">
                         <div class="progress-value" id="progress-synthwave" style="background-color: #ff00ff;"></div>
@@ -416,8 +429,8 @@
             const consoleContainer = document.getElementById('mini-console-ooc');
             let isTyping = false;
 
-            const successMessages = ["COMMAND ACCEPTED. PROCESSING...", "QUERY RECEIVED. EXECUTING...", "INPUT PARSED. AWAITING SYSTEM RESPONSE.", "ROUTING TO SUB-PROCESSOR... OK.", "DIRECTIVE CONFIRMED."];
-            const failureMessages = ["COMMAND NOT RECOGNIZED. SYNTAX ERROR?", "ACCESS DENIED. INSUFFICIENT CLEARANCE.", "ACCESS DENIED. YOU ARE RETARDED.", "QUERY FAILED. YOU ARE NOT SMART ENOUGH.", "ERROR: MEMORY OVERFLOW AT 0x7b. ABORTING.", "DIRECTIVE REJECTED.", "PISS OFF."];
+            const successMessages = ["COMMAND ACCEPTED. PROCESSING...", "BY GOD, YOU'RE A GENIUS!", "QUERY RECEIVED. EXECUTING...", "INPUT PARSED. AWAITING SYSTEM RESPONSE.", "ROUTING TO SUB-PROCESSOR... OK.", "DIRECTIVE CONFIRMED."];
+            const failureMessages = ["COMMAND NOT RECOGNIZED. SYNTAX ERROR?", "SERIOUSLY NOW?", "ACCESS DENIED. INSUFFICIENT CLEARANCE.", "ACCESS DENIED. YOU ARE RETARDED.", "QUERY FAILED. YOU ARE NOT SMART ENOUGH.", "ERROR: MEMORY OVERFLOW AT 0x7b. ABORTING.", "DIRECTIVE REJECTED.", "PISS OFF."];
 
             function addLineToConsole(text, cssClass = '') {
                 const lineElement = document.createElement('div');
@@ -433,7 +446,7 @@
                 if (event.key === 'Enter' && consoleInput.value.trim() !== '' && !isTyping) {
                     event.preventDefault();
                     const command = consoleInput.value;
-                    addLineToConsole(`> ${command}`);
+                    addLineToConsole(`> ${command}`, 'console-user-command');
                     consoleInput.value = '';
 
                     setTimeout(() => {
@@ -487,5 +500,6 @@
         });
     </script>
 </body>
+
 
 </html>
